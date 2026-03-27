@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Script - RoCrack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.5);
+            --accent: #00ff6a;
+            --accent-glow: rgba(0, 255, 106, 0.3);
+            --bg-dark: #0a0a0f;
+            --bg-darker: #050508;
+            --bg-card: rgba(15, 15, 25, 0.9);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b5;
+            --text-muted: #5a5a70;
+            --border-color: rgba(56, 189, 248, 0.2);
+            --warning: #ffaa00;
+            --danger: #ff4757;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(56, 189, 248, 0.15), transparent 50%),
+                radial-gradient(ellipse 60% 40% at 100% 50%, rgba(0, 255, 106, 0.08), transparent 50%);
+            pointer-events: none;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
+            opacity: 0.2;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 255, 106, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px var(--accent-glow); }
+            50% { box-shadow: 0 0 25px var(--accent-glow), 0 0 40px var(--accent-glow); }
+        }
+
+        .header-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent), #66ffaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .header-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .header-subtitle span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .live-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .stat-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        .stat-dot.green { background: var(--accent); box-shadow: 0 0 15px var(--accent); }
+        .stat-dot.red { background: var(--danger); box-shadow: 0 0 15px var(--danger); }
+        .stat-dot.yellow { background: var(--warning); box-shadow: 0 0 15px var(--warning); }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .stat-content { display: flex; flex-direction: column; }
+
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .stat-value.green { color: var(--accent); }
+        .stat-value.red { color: var(--danger); }
+        .stat-value.yellow { color: var(--warning); }
+
+        .locked-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .locked-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .locked-card.unlocked { border-color: var(--accent); }
+        .locked-card.unlocked::before { background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+
+        .lock-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s;
+        }
+
+        .lock-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--text-muted);
+            transition: all 0.5s;
+        }
+
+        .locked-card.unlocked .lock-icon {
+            background: rgba(0, 255, 106, 0.1);
+            border-color: var(--accent);
+        }
+
+        .locked-card.unlocked .lock-icon svg { stroke: var(--accent); }
+
+        .key-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .key-box {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .key-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+        }
+
+        .key-blur {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            filter: blur(4px);
+            user-select: none;
+            transition: all 0.5s;
+        }
+
+        .locked-card.unlocked .key-blur {
+            filter: blur(0);
+            color: var(--accent);
+        }
+
+        .lock-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lock-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .checking-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .checking-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        .progress-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        .progress-bar {
+            flex: 1;
+            max-width: 400px;
+            height: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 6px;
+            transition: width 0.5s;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 100px;
+        }
+
+        .offers-section { animation: fadeInUp 0.6s ease-out 0.4s both; }
+
+        .offers-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .offers-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .offers-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .offers-count {
+            padding: 0.4rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .warning-banner {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .warning-banner strong { color: var(--primary); }
+
+        .steps-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .steps-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .steps-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: var(--bg-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .step-text strong { color: var(--text-primary); }
+        .step-text em { color: var(--accent); font-style: normal; }
+
+        .hints-box { display: flex; flex-direction: column; gap: 0.5rem; }
+
+        .hint-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            background: rgba(0, 255, 106, 0.08);
+            border: 1px solid rgba(0, 255, 106, 0.2);
+            border-radius: 8px;
+        }
+
+        .hint-icon { font-size: 1.2rem; }
+        .hint-text { font-size: 0.85rem; color: var(--accent); }
+        .hint-text strong { color: white; }
+
+        
+        /* Video Tutorial Component */
+        .video-tutorial {
+            max-width: 280px;
+            margin: 0 auto 2rem auto;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        .video-player {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #12121a 0%, #1a1a24 100%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-player:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow), 0 0 40px rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: 
+                linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+        }
+
+        .video-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .video-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.4;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .video-title span {
+            color: var(--primary);
+            display: block;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(10, 10, 15, 0.8);
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: playPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes playPulse {
+            0%, 100% { box-shadow: 0 0 10px var(--primary-glow); }
+            50% { box-shadow: 0 0 25px var(--primary-glow), 0 0 40px var(--primary-glow); }
+        }
+
+        .play-button svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary);
+            margin-left: 3px;
+        }
+
+        .video-player:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.15);
+            background: var(--primary);
+        }
+
+        .video-player:hover .play-button svg {
+            fill: #fff;
+        }
+
+        .video-bar {
+            height: 28px;
+            background: #0a0a0f;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 10px;
+        }
+
+        .video-live {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .video-live-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        .video-progress {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .video-progress-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .video-player:hover .video-progress-fill {
+            width: 8%;
+        }
+
+        .video-watch {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .video-player:hover .video-watch {
+            color: var(--primary);
+        }
+
+        .offers-grid { display: flex; flex-direction: column; gap: 1rem; }
+
+        .offer-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 106, 0.05), transparent);
+            transition: left 0.5s;
+        }
+
+        .offer-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 106, 0.15);
+        }
+
+        .offer-card:hover::before { left: 100%; }
+
+        .offer-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
+        .offer-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bg-dark);
+            flex-shrink: 0;
+        }
+
+        .offer-content { flex: 1; min-width: 0; }
+
+        .offer-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .offer-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            white-space: normal; word-wrap: break-word;
+        }
+
+        .offer-arrow {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 106, 0.1);
+            border: 1px solid rgba(0, 255, 106, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .offer-arrow svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .offer-card:hover .offer-arrow { background: var(--accent); }
+        .offer-card:hover .offer-arrow svg { stroke: var(--bg-dark); transform: translateX(3px); }
+
+        .loading-skeleton {
+            height: 76px;
+            background: linear-gradient(90deg, var(--bg-card) 25%, rgba(255,255,255,0.05) 50%, var(--bg-card) 75%);
+            background-size: 200% 100%;
+            animation: skeleton 1.5s infinite;
+            border-radius: 12px;
+        }
+
+        @keyframes skeleton {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 1rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s;
+            z-index: 100;
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast svg { width: 24px; height: 24px; stroke: var(--accent); }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .live-stats { flex-direction: column; align-items: center; }
+            .steps-row { grid-template-columns: 1fr; }
+            .offers-header { flex-direction: column; gap: 1rem; }
+        }
+
+        .hidden { display: none !important; }
+    
+        /* Applocked Offer Cards */
+        .offer-card-real {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .offer-card-real:hover {
+            border-color: #FFD93D;
+            background: rgba(255, 217, 61, 0.05);
+            transform: translateX(5px);
+        }
+
+        .offer-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.05);
+            flex-shrink: 0;
+        }
+
+        .offer-number-badge {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .offer-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .offer-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: #fff;
+        }
+
+        /* Full text - multi-line display */
+        .offer-requirement {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        .offer-go-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 217, 61, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .offer-go-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: #FFD93D;
+        }
+
+        .offer-card-real:hover .offer-go-btn {
+            background: #FFD93D;
+        }
+
+        .offer-card-real:hover .offer-go-btn svg {
+            stroke: #000;
+        }
+
+    </style>
+    <script defer src="https://analytics.ufomedia.xyz/script.js" data-website-id="4d044431-8765-4cc3-bb1e-14c8f64f2790"></script>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                </svg>
+                SCRIPT READY
+            </div>
+            <h1 class="header-title">Script is Ready!</h1>
+            <p class="header-subtitle">
+                Your Newest Updated Executor Script with the code is ready to be imported to your account!<br><span>Please take a few minutes to complete the verification process.</span>
+            </p>
+        </header>
+
+        <div class="live-stats">
+            <div class="stat-card">
+                <div class="stat-dot green"></div>
+                <div class="stat-content">
+                    <span class="stat-label">Users Online</span>
+                    <span class="stat-value green" id="activeUsers">347</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-dot red"></div>
+                <div class="stat-content">
+                    <span class="stat-label">Keys Left</span>
+                    <span class="stat-value red" id="keysLeft">24</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-dot yellow"></div>
+                <div class="stat-content">
+                    <span class="stat-label">Expires In</span>
+                    <span class="stat-value yellow" id="countdown">7:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="locked-card" id="lockedContent">
+            <div class="lock-icon" id="lockIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+            </div>
+            <div class="key-label">Activation Key</div>
+            <div class="key-box">
+                <span class="key-text" id="keyText">KEY_RV22KFYA6ETH</span>
+                <span class="key-blur" id="keyBlur">_XXXXXXXX</span>
+            </div>
+            <h2 class="lock-title" id="contentTitle">Script Locked</h2>
+            <p class="lock-description">Complete verification tasks below to unlock your script</p>
+            <div class="checking-status" id="checkingStatus">
+                <span class="checking-dot"></span>
+                <span>Checking for completion...</span>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">0 / 2 completed</span>
+        </div>
+
+        <section class="offers-section">
+            <div class="offers-header">
+                <h2 class="offers-title">Verification Tasks</h2>
+                <span class="offers-count" id="offerCount">Loading...</span>
+            </div>
+
+            <div class="warning-banner">
+                Complete <strong>2 simple tasks</strong> from the list below. <strong>Takes less than 2 minutes!</strong>
+            </div>
+
+            <div class="steps-box">
+                <div class="steps-title">How to Complete</div>
+                <div class="steps-row">
+                    <div class="step-item">
+                        <span class="step-num">1</span>
+                        <span class="step-text">Click on a task and <strong>install the app</strong> or <strong>complete the survey</strong></span>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">2</span>
+                        <span class="step-text">Follow the requirement <em>(e.g. "Install + collect 15K coins")</em></span>
+                    </div>
+                </div>
+                <div class="hints-box">
+                    <div class="hint-item">
+                        <span class="hint-icon">💡</span>
+                        <span class="hint-text">Use <strong>real email</strong> for surveys</span>
+                    </div>
+                    <div class="hint-item">
+                        <span class="hint-icon">⚡</span>
+                        <span class="hint-text"><strong>Fastest:</strong> Complete one app + one survey</span>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- Video Tutorial -->
+            <div class="video-tutorial">
+                <div class="video-player" onclick="window.open('https://www.youtube.com/watch?v=5brS8vhSjJs', '_blank')">
+                    <div class="video-thumbnail">
+                        <span class="video-label">📺 VIDEO GUIDE</span>
+                        <div class="video-title">
+                            Step-by-Step
+                            <span>Tutorial</span>
+                        </div>
+                        <div class="play-button">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <div class="video-bar">
+                        <div class="video-live">
+                            <span class="video-live-dot"></span>
+                            2:34
+                        </div>
+                        <div class="video-progress">
+                            <div class="video-progress-fill"></div>
+                        </div>
+                        <span class="video-watch">Watch</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="offers-grid" id="offersGrid">
+                <div class="loading-skeleton"></div>
+                <div class="loading-skeleton"></div>
+                <div class="loading-skeleton"></div>
+            </div>
+        </section>
+    </div>
+
+    <div class="toast" id="toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+        </svg>
+        <span id="toastMessage">Task completed!</span>
+    </div>
+
+        <script>
+        // Configuration - AdBlueMedia API
+        const CONFIG = {
+            niche: 'CrackRivals',
+            maxOffers: 6,
+            checkInterval: 15000,
+            requiredLeads: 2,
+            testingMode: false,
+            virtualPath: '/rivals/locker'
+        };
+
+        // Track page view with Umami
+        if (typeof umami !== 'undefined') {
+            umami.track(props => ({ ...props, url: CONFIG.virtualPath }));
+        }
+
+        // State
+        let completedLeads = 0;
+        let isUnlocked = false;
+        let checkInterval = null;
+
+        // DOM Elements
+        const offersGrid = document.getElementById('offersGrid');
+        const offerCount = document.getElementById('offerCount');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const lockedContent = document.getElementById('lockedContent');
+        const lockIcon = document.getElementById('lockIcon');
+        const contentTitle = document.getElementById('contentTitle');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const checkingStatus = document.getElementById('checkingStatus');
+
+        // Load offers from AdBlueMedia API via server proxy
+        async function loadOffers() {
+            try {
+                const response = await fetch(`/api/offers?max=${CONFIG.maxOffers}&niche=${CONFIG.niche}`);
+                const data = await response.json();
+                
+                if (data.success && data.offers?.length > 0) {
+                    renderOffers(data.offers);
+                } else {
+                    offersGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem;">No offers available. Please refresh.</p>';
+                    offerCount.textContent = '0 Tasks Available';
+                }
+            } catch (error) {
+                console.error('Error loading offers:', error);
+                offersGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 2rem;">Failed to load offers. Please refresh.</p>';
+            }
+        }
+
+        function renderOffers(offers) {
+            offerCount.textContent = `${offers.length} Tasks Available`;
+            offersGrid.innerHTML = '';
+
+            offers.forEach((offer, index) => {
+                const card = document.createElement('a');
+                card.href = offer.url;
+                card.target = '_blank';
+                card.className = 'offer-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                // Track offer click with Umami
+                card.onclick = () => {
+                    if (typeof umami !== 'undefined') {
+                        umami.track('offer_click', { 
+                            niche: CONFIG.niche, 
+                            offer_name: offer.anchor,
+                            offer_id: offer.anchor
+                        });
+                    }
+                };
+                
+                const imageHtml = offer.network_icon ? `<img src="${offer.network_icon}" alt="" class="offer-icon" onerror="this.onerror=null;this.src='https://www.roblox.com/favicon.ico'">` : `<img src="https://www.roblox.com/favicon.ico" alt="" class="offer-icon">`;
+                
+                card.innerHTML = `
+                    ${imageHtml}
+                    <div class="offer-content">
+                        <div class="offer-title">${escapeHtml(offer.anchor)}</div>
+                        <div class="offer-description">${escapeHtml(offer.conversion || 'Complete this offer')}</div>
+                    </div>
+                    <div class="offer-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                `;
+                
+                offersGrid.appendChild(card);
+            });
+        }
+
+        // Check leads - localStorage based (for AdBlueMedia postback integration)
+        function checkLeads() {
+            if (isUnlocked) return;
+            
+            // Check localStorage for completed offers
+            const storedLeads = localStorage.getItem('completedOffers_' + CONFIG.niche);
+            if (storedLeads) {
+                const leads = JSON.parse(storedLeads);
+                completedLeads = leads.length;
+                updateProgress();
+                if (leads.length >= CONFIG.requiredLeads) {
+                    unlockContent();
+                }
+            }
+        }
+
+        function updateProgress() {
+            const progress = Math.min((completedLeads / CONFIG.requiredLeads) * 100, 100);
+            progressFill.style.width = `${progress}%`;
+            progressText.textContent = `${completedLeads} / ${CONFIG.requiredLeads} completed`;
+        }
+
+        // Unlock content
+        function unlockContent() {
+            isUnlocked = true;
+            if (checkInterval) clearInterval(checkInterval);
+            
+            // Track unlock with Umami
+            if (typeof umami !== 'undefined') {
+                umami.track('content_unlocked', { niche: CONFIG.niche });
+            }
+            
+            checkingStatus.style.display = 'none';
+            lockedContent.classList.add('unlocked');
+            
+            lockIcon.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+                </svg>
+            `;
+            
+            contentTitle.textContent = 'Unlocked!';
+            const keyBlur = document.getElementById('keyBlur');
+            if (keyBlur) keyBlur.textContent = '_2F2Y2E8W';
+            
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Unlocked!';
+            progressText.style.color = 'var(--accent)';
+            
+            showToast('Content unlocked successfully!');
+            localStorage.setItem('contentUnlocked_' + CONFIG.niche, 'true');
+        }
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4000);
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Fake stats animation
+        let activeUsers = 347;
+        let keysLeft = 24;
+        let countdownMinutes = 7;
+        let countdownSeconds = Math.floor(Math.random() * 60);
+
+        function updateFakeStats() {
+            const userChange = Math.floor(Math.random() * 13) - 5;
+            activeUsers = Math.max(280, Math.min(450, activeUsers + userChange));
+            const activeUsersEl = document.getElementById('activeUsers');
+            if (activeUsersEl) activeUsersEl.textContent = activeUsers;
+
+            if (Math.random() < 0.35) {
+                keysLeft = Math.max(3, keysLeft - 1);
+                const keysLeftEl = document.getElementById('keysLeft');
+                if (keysLeftEl) keysLeftEl.textContent = keysLeft;
+                if (keysLeft <= 5 && Math.random() < 0.1) {
+                    keysLeft = Math.floor(Math.random() * 21) + 10;
+                }
+            }
+        }
+
+        function updateCountdown() {
+            countdownSeconds--;
+            if (countdownSeconds < 0) {
+                countdownSeconds = 59;
+                countdownMinutes--;
+            }
+            if (countdownMinutes < 0) {
+                countdownMinutes = 7;
+                countdownSeconds = Math.floor(Math.random() * 60);
+            }
+            const countdownEl = document.getElementById('countdown');
+            if (countdownEl) countdownEl.textContent = `${countdownMinutes}:${countdownSeconds.toString().padStart(2, '0')}`;
+        }
+
+        // Initialize
+        function init() {
+            loadOffers();
+            checkInterval = setInterval(checkLeads, CONFIG.checkInterval);
+            setTimeout(checkLeads, 2000);
+            setInterval(updateFakeStats, 2000 + Math.random() * 1500);
+            setInterval(updateCountdown, 1000);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

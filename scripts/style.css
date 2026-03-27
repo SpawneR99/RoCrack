@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000000;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    padding: 1rem;
+    width: 100%;
+}
+
+.content {
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    letter-spacing: -0.025em;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.glass-button {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    max-width: 24rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.5s;
+}
+
+.glass-button span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(to right, white, rgba(255, 255, 255, 0.7));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.glass-button svg {
+    opacity: 0.5;
+    transition: opacity 0.5s;
+}
+
+.glass-button:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.glass-button:hover svg {
+    opacity: 1;
+}

