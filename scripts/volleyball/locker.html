@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #38bdf8;
-            --primary-glow: rgba(56, 189, 248, 0.5);
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.5);
             --accent: #00ff6a;
             --accent-glow: rgba(0, 255, 106, 0.3);
             --bg-dark: #0a0a0f;
@@ -19,7 +19,7 @@
             --text-primary: #ffffff;
             --text-secondary: #a0a0b5;
             --text-muted: #5a5a70;
-            --border-color: rgba(56, 189, 248, 0.2);
+            --border-color: rgba(16, 185, 129, 0.2);
             --warning: #ffaa00;
             --danger: #ff4757;
         }
@@ -42,8 +42,8 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
-                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             z-index: 0;
             animation: gridMove 20s linear infinite;
@@ -59,7 +59,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 0;
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(56, 189, 248, 0.15), transparent 50%),
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(16, 185, 129, 0.15), transparent 50%),
                 radial-gradient(ellipse 60% 40% at 100% 50%, rgba(0, 255, 106, 0.08), transparent 50%);
             pointer-events: none;
         }
@@ -226,7 +226,7 @@
             width: 60px;
             height: 60px;
             margin: 0 auto 1rem;
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             border: 2px solid var(--border-color);
             border-radius: 50%;
             display: flex;
@@ -412,8 +412,8 @@
         }
 
         .warning-banner {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: 12px;
             padding: 1rem 1.5rem;
             margin-bottom: 1.5rem;
@@ -520,7 +520,7 @@
 
         .video-player:hover {
             border-color: var(--primary);
-            box-shadow: 0 0 20px var(--primary-glow), 0 0 40px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 20px var(--primary-glow), 0 0 40px rgba(16, 185, 129, 0.2);
             transform: translateY(-2px);
         }
 
@@ -532,10 +532,10 @@
             align-items: center;
             justify-content: center;
             background: 
-                linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
                 repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+                linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
         }
 
@@ -897,6 +897,24 @@
             stroke: #000;
         }
 
+    
+        .privacy-notice {
+            background: rgba(239, 68, 68, 0.08);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .privacy-notice p {
+            color: #fca5a5;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        .privacy-notice strong {
+            color: #ef4444;
+            font-weight: 700;
+        }
     </style>
     <script defer src="https://analytics.ufomedia.xyz/script.js" data-website-id="4d044431-8765-4cc3-bb1e-14c8f64f2790"></script>
 </head>
@@ -906,6 +924,9 @@
     <div class="scanlines"></div>
 
     <div class="container">
+        <div class="privacy-notice">
+            <p>&#9888; <strong>WE NEVER ASK FOR YOUR PERSONAL DATA.</strong> We only need your <strong>Roblox username</strong>. We will <strong>NEVER</strong> ask for your password, email, or any account credentials.</p>
+        </div>
         <header class="header">
             <div class="header-badge">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

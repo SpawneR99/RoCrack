@@ -79,7 +79,7 @@ body {
 .logo-text {
   font-size: 2.5rem;
   font-weight: bold;
-  background: linear-gradient(to right, #ef4444, #a855f7, #ec4899);
+  background: linear-gradient(to right, #ef4444, #34d399, #10b981);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

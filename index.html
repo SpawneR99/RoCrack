@@ -34,19 +34,19 @@
     <link rel="apple-touch-icon" href="/logo.png">
     
     <!-- Theme Color -->
-    <meta name="theme-color" content="#8b5cf6">
+    <meta name="theme-color" content="#22c55e">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8b5cf6;
-            --primary-glow: rgba(139, 92, 246, 0.4);
-            --primary-dark: #6d28d9;
-            --primary-soft: rgba(139, 92, 246, 0.08);
-            --secondary: #38bdf8;
-            --secondary-glow: rgba(56, 189, 248, 0.25);
+            --primary: #22c55e;
+            --primary-glow: rgba(34, 197, 94, 0.4);
+            --primary-dark: #16a34a;
+            --primary-soft: rgba(34, 197, 94, 0.08);
+            --secondary: #10b981;
+            --secondary-glow: rgba(16, 185, 129, 0.25);
             --bg-dark: #09090b;
             --bg-darker: #050506;
             --bg-card: rgba(16, 16, 20, 0.85);
@@ -58,7 +58,30 @@
             --border-hover: rgba(255, 255, 255, 0.12);
             --success: #22c55e;
             --warning: #f59e0b;
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.08);
+            --danger-border: rgba(239, 68, 68, 0.3);
             --radius: 16px;
+        }
+
+        .privacy-notice {
+            background: var(--danger-bg);
+            border: 2px solid var(--danger-border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .privacy-notice p {
+            color: #fca5a5;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .privacy-notice strong {
+            color: var(--danger);
+            font-weight: 700;
         }
 
         * {
@@ -107,9 +130,9 @@
             height: 100%;
             z-index: 0;
             background: 
-                radial-gradient(ellipse 70% 50% at 50% -20%, rgba(139, 92, 246, 0.08), transparent 60%),
-                radial-gradient(ellipse 50% 50% at 80% 50%, rgba(139, 92, 246, 0.03), transparent 60%),
-                radial-gradient(ellipse 40% 50% at 20% 80%, rgba(56, 189, 248, 0.02), transparent 60%);
+                radial-gradient(ellipse 70% 50% at 50% -20%, rgba(34, 197, 94, 0.08), transparent 60%),
+                radial-gradient(ellipse 50% 50% at 80% 50%, rgba(34, 197, 94, 0.03), transparent 60%),
+                radial-gradient(ellipse 40% 50% at 20% 80%, rgba(16, 185, 129, 0.02), transparent 60%);
             pointer-events: none;
         }
 
@@ -258,7 +281,7 @@
             transform: translate(-50%, -50%);
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%);
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.1), transparent 70%);
             pointer-events: none;
         }
 
@@ -268,7 +291,7 @@
             gap: 0.5rem;
             padding: 0.4rem 1.2rem;
             background: var(--primary-soft);
-            border: 1px solid rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.2);
             border-radius: 50px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
@@ -288,7 +311,7 @@
         }
 
         .hero-title .highlight {
-            background: linear-gradient(135deg, var(--primary), #a78bfa);
+            background: linear-gradient(135deg, var(--primary), #4ade80);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -438,12 +461,12 @@
 
         .feature-card.executor {
             --card-color: var(--primary);
-            --card-glow: rgba(139, 92, 246, 0.08);
+            --card-glow: rgba(34, 197, 94, 0.08);
         }
 
         .feature-card.scripts {
             --card-color: var(--secondary);
-            --card-glow: rgba(56, 189, 248, 0.08);
+            --card-glow: rgba(16, 185, 129, 0.08);
         }
 
         .card-icon-wrapper {
@@ -768,7 +791,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.3), transparent);
         }
 
         .seo-content h2 {
@@ -988,6 +1011,10 @@
                     <span class="trust-value">100%</span>
                     <span class="trust-label">Safe</span>
                 </div>
+            </div>
+
+            <div class="privacy-notice">
+                <p>&#9888; <strong>WE NEVER ASK FOR YOUR PERSONAL DATA.</strong> RoCrack will never request your Roblox password, email, or any personal information. The <strong>ONLY</strong> thing we ask for is your <strong>Roblox username</strong> — which is publicly visible to everyone. <strong>Never share your password with anyone.</strong></p>
             </div>
         </section>
 
@@ -1271,12 +1298,11 @@
             <div class="footer-content">
                 <span class="footer-brand">RoCrack</span>
                 <div class="footer-links">
-                    <a href="#" class="footer-link">Terms of Service</a>
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Contact</a>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
                 </div>
                 <p class="footer-disclaimer">
-                    Not affiliated with Roblox Corporation. Use at your own risk.
+                    Not affiliated with Roblox Corporation. We never ask for your password or personal data — only your username. Use at your own risk.
                 </p>
                 <span class="footer-copyright">© 2026 RoCrack. ALL RIGHTS RESERVED.</span>
             </div>

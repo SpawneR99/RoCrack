@@ -14,13 +14,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8b5cf6;
-            --primary-glow: rgba(139, 92, 246, 0.5);
-            --primary-dark: #6d28d9;
-            --secondary: #38bdf8;
-            --secondary-glow: rgba(56, 189, 248, 0.3);
-            --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.3);
+            --primary: #22c55e;
+            --primary-glow: rgba(34, 197, 94, 0.5);
+            --primary-dark: #16a34a;
+            --secondary: #10b981;
+            --secondary-glow: rgba(16, 185, 129, 0.3);
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.3);
             --bg-dark: #0a0a0f;
             --bg-darker: #050508;
             --bg-card: rgba(15, 15, 25, 0.8);
@@ -28,9 +28,32 @@
             --text-primary: #ffffff;
             --text-secondary: #a0a0b5;
             --text-muted: #5a5a70;
-            --border-color: rgba(56, 189, 248, 0.2);
+            --border-color: rgba(16, 185, 129, 0.2);
             --success: #00ff6a;
             --warning: #ffaa00;
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.08);
+            --danger-border: rgba(239, 68, 68, 0.3);
+        }
+
+        .privacy-notice {
+            background: var(--danger-bg);
+            border: 2px solid var(--danger-border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .privacy-notice p {
+            color: #fca5a5;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .privacy-notice strong {
+            color: var(--danger);
+            font-weight: 700;
         }
 
         * {
@@ -59,8 +82,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             z-index: 0;
             animation: gridMove 20s linear infinite;
@@ -79,8 +102,8 @@
             height: 100%;
             z-index: 0;
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(56, 189, 248, 0.12), transparent 50%),
-                radial-gradient(ellipse 60% 40% at 100% 50%, rgba(139, 92, 246, 0.08), transparent 50%);
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(16, 185, 129, 0.12), transparent 50%),
+                radial-gradient(ellipse 60% 40% at 100% 50%, rgba(34, 197, 94, 0.08), transparent 50%);
             pointer-events: none;
         }
 
@@ -153,7 +176,7 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
-            background: linear-gradient(90deg, var(--accent), #7dd3fc);
+            background: linear-gradient(90deg, var(--accent), #6ee7b7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -253,7 +276,7 @@
         .script-card:hover {
             transform: translateY(-8px) scale(1.02);
             border-color: var(--accent);
-            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15);
         }
 
         .script-card:hover::before,
@@ -277,13 +300,13 @@
             transition: transform 0.3s;
             object-fit: cover;
             border: 2px solid var(--border-color);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
 
         .script-card:hover .script-icon {
             transform: rotate(5deg) scale(1.1);
             border-color: var(--accent);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
         }
 
         .script-info {
@@ -339,7 +362,7 @@
         .script-arrow {
             width: 36px;
             height: 36px;
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             display: flex;
@@ -521,6 +544,10 @@
             </a>
             <span class="script-count">14 SCRIPTS</span>
         </header>
+
+        <div class="privacy-notice">
+            <p>&#9888; <strong>WE NEVER ASK FOR YOUR PERSONAL DATA.</strong> We only need your <strong>Roblox username</strong> (public info). We will <strong>NEVER</strong> ask for your password, email, or any account credentials.</p>
+        </div>
 
         <div class="hero">
             <h2 class="hero-title">Select Your Script</h2>
@@ -1071,6 +1098,11 @@
             <p class="footer-text">
                 © 2026 <span class="footer-brand">RoCrack</span> • Premium Roblox Scripts
             </p>
+                    <div style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.5rem;">
+                <a href="../../../../../../terms.html" style="color:#55556a;text-decoration:none;font-size:0.8rem;">Terms of Service</a>
+                <a href="../../../../../../privacy.html" style="color:#55556a;text-decoration:none;font-size:0.8rem;">Privacy Policy</a>
+            </div>
+            <p style="color:#55556a;font-size:0.72rem;margin-top:0.5rem;">We never ask for your password or personal data — only your username.</p>
         </footer>
     </div>
 

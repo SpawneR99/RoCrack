@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — RoCrack</title>
+    <meta name="description" content="RoCrack Privacy Policy. Learn how we protect your privacy. We only ask for your Roblox username — never passwords, emails, or personal data.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://RoCrack.com/privacy.html">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#22c55e">
+    <style>
+        :root {
+            --primary: #22c55e;
+            --primary-glow: rgba(34, 197, 94, 0.4);
+            --primary-dark: #16a34a;
+            --primary-soft: rgba(34, 197, 94, 0.08);
+            --bg-dark: #09090b;
+            --bg-darker: #050506;
+            --bg-card: rgba(16, 16, 20, 0.85);
+            --text-primary: #f0f0f5;
+            --text-secondary: #9898ad;
+            --text-muted: #55556a;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.08);
+            --danger-border: rgba(239, 68, 68, 0.3);
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            min-height: 100vh;
+            font-size: 15px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bg-grid {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .bg-glow {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 50% -20%, rgba(34, 197, 94, 0.08), transparent 60%),
+                radial-gradient(ellipse 50% 50% at 80% 50%, rgba(34, 197, 94, 0.03), transparent 60%);
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative; z-index: 2;
+            max-width: 800px; margin: 0 auto;
+            padding: 2rem 1.5rem; min-height: 100vh;
+            display: flex; flex-direction: column;
+        }
+
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 0; margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+        .logo-image { height: 50px; width: auto; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .back-link:hover { background: var(--primary); color: #000; }
+
+        .page-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .page-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .privacy-banner {
+            background: var(--danger-bg);
+            border: 2px solid var(--danger-border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .privacy-banner h3 {
+            color: var(--danger);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .privacy-banner p {
+            color: #fca5a5;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .privacy-banner strong {
+            color: var(--danger);
+            font-weight: 700;
+        }
+
+        .data-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .data-card {
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .data-card.collect {
+            background: rgba(34, 197, 94, 0.06);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .data-card.no-collect {
+            background: var(--danger-bg);
+            border: 1px solid var(--danger-border);
+        }
+
+        .data-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .data-card.collect h4 { color: var(--primary); }
+        .data-card.no-collect h4 { color: var(--danger); }
+
+        .data-card ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.88rem;
+            line-height: 2;
+        }
+
+        .data-card.collect ul { color: #86efac; }
+        .data-card.no-collect ul { color: #fca5a5; }
+
+        .data-card li::before {
+            margin-right: 0.4rem;
+            font-weight: 700;
+        }
+
+        .data-card.collect li::before { content: '✓'; color: var(--primary); }
+        .data-card.no-collect li::before { content: '✗'; color: var(--danger); }
+
+        .content-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 2rem 0 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-section h2:first-of-type { margin-top: 0; }
+
+        .content-section p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .content-section ul, .content-section ol {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+        }
+
+        .content-section li { margin-bottom: 0.4rem; }
+        .content-section strong { color: var(--text-primary); }
+
+        .footer {
+            margin-top: auto; padding: 2rem 0 1.5rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem; color: var(--text-muted);
+            letter-spacing: 2px;
+        }
+
+        .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.5rem; }
+        .footer-link {
+            color: var(--text-muted); text-decoration: none;
+            font-size: 0.8rem; transition: color 0.25s;
+        }
+        .footer-link:hover { color: var(--text-secondary); }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .header { flex-direction: column; gap: 0.75rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .data-summary { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="RoCrack Logo" class="logo-image">
+            </a>
+            <a href="index.html" class="back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                BACK TO HOME
+            </a>
+        </header>
+
+        <h1 class="page-title">Privacy Policy</h1>
+        <p class="page-date">Last Updated: March 27, 2026</p>
+
+        <div class="privacy-banner">
+            <h3>&#9888; YOUR PRIVACY IS OUR TOP PRIORITY</h3>
+            <p>RoCrack will <strong>NEVER</strong> ask for your Roblox password, email, personal information, or any account credentials. We only ask for your <strong>Roblox username</strong> — which is public information visible to everyone. We do <strong>NOT</strong> collect, store, or share any personal data. If someone asks for your password claiming to be RoCrack — <strong>it is a scam.</strong></p>
+        </div>
+
+        <div class="data-summary">
+            <div class="data-card collect">
+                <h4>What We Collect</h4>
+                <ul>
+                    <li>Roblox Username (public info)</li>
+                    <li>Anonymous usage analytics</li>
+                </ul>
+            </div>
+            <div class="data-card no-collect">
+                <h4>What We NEVER Collect</h4>
+                <ul>
+                    <li>Passwords</li>
+                    <li>Email Addresses</li>
+                    <li>Real Names</li>
+                    <li>Phone Numbers</li>
+                    <li>Financial Data</li>
+                    <li>Device Data / IP Logs</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2>1. Information We Collect</h2>
+            <p>RoCrack operates on a strict <strong>data minimization</strong> principle. We collect the absolute minimum amount of information required to provide our services:</p>
+            <ul>
+                <li><strong>Roblox Username</strong> — When you use our key generation system, we ask for your Roblox username. This is publicly available information that anyone can see on the Roblox platform. We use it solely for the purpose of generating your activation key.</li>
+                <li><strong>Anonymous Analytics</strong> — We use privacy-respecting analytics (Umami) to understand how people use our website. This data is fully anonymized and contains no personally identifiable information. We track page views and general usage patterns to improve our service.</li>
+            </ul>
+
+            <h2>2. Information We Do NOT Collect</h2>
+            <p>To be absolutely clear, RoCrack does <strong>NOT</strong> collect any of the following:</p>
+            <ul>
+                <li><strong>Roblox Passwords</strong> — We will never ask for your Roblox password. Our services do not require it.</li>
+                <li><strong>Email Addresses</strong> — We do not request or store email addresses.</li>
+                <li><strong>Personal Identity</strong> — No real names, dates of birth, addresses, or government IDs.</li>
+                <li><strong>Phone Numbers</strong> — We do not request or store phone numbers.</li>
+                <li><strong>Financial Information</strong> — No credit cards, bank accounts, or payment details. RoCrack is 100% free.</li>
+                <li><strong>Roblox Account Data</strong> — We cannot and do not access your Roblox inventory, Robux balance, friends list, or any other account data.</li>
+                <li><strong>Cookies for Tracking</strong> — We do not use advertising cookies or tracking pixels to follow you across the internet.</li>
+            </ul>
+
+            <h2>3. How We Use Your Username</h2>
+            <p>Your Roblox username is used exclusively for:</p>
+            <ul>
+                <li>Generating your Delta Executor activation key</li>
+                <li>Displaying your avatar during the setup process (fetched from Roblox's public API)</li>
+            </ul>
+            <p>Your username is <strong>not stored in any database</strong> after your session ends. It is processed in real-time and discarded.</p>
+
+            <h2>4. Third-Party Services</h2>
+            <p>Our verification process may redirect you to third-party offer walls provided by our advertising partner (AdBlueMedia). These third parties have their own privacy policies, and RoCrack is not responsible for data you provide to them. We encourage you to review their privacy policies before completing any offers.</p>
+            <p>We use <strong>Umami Analytics</strong>, a privacy-focused, cookieless analytics platform that does not collect personal data or track individual users.</p>
+
+            <h2>5. Data Security</h2>
+            <p>We protect data through:</p>
+            <ul>
+                <li>HTTPS/TLS encryption for all connections</li>
+                <li>No persistent storage of user data</li>
+                <li>Server-side API proxying to prevent exposure of sensitive endpoints</li>
+                <li>Regular security audits</li>
+            </ul>
+
+            <h2>6. Children's Privacy</h2>
+            <p>RoCrack does not knowingly collect personal information from children under the age of 13. Since we only collect publicly available Roblox usernames and no personal data, our service is designed with privacy for all ages in mind.</p>
+
+            <h2>7. Your Rights</h2>
+            <p>Since we do not store personal data, there is typically nothing to delete or export. However, if you have any privacy concerns, please contact us and we will address them promptly.</p>
+
+            <h2>8. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Changes will be reflected by updating the "Last Updated" date. We encourage you to review this policy periodically.</p>
+
+            <h2>9. Contact</h2>
+            <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact us through our community channels or the platform.</p>
+        </section>
+
+        <footer class="footer">
+            <span class="footer-brand">© 2026 ROCRACK. ALL RIGHTS RESERVED.</span>
+            <div class="footer-links">
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="index.html" class="footer-link">Home</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
