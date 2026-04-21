@@ -1245,6 +1245,11 @@
             try {
                 const response = await fetch(`/api/offers?max=${CONFIG.maxOffers}&niche=${CONFIG.niche}`);
                 const data = await response.json();
+                // /* rc-patch:required-from-api */  sync required-leads from server (admin is source of truth)
+                if (typeof data.requiredLeads === 'number' && data.requiredLeads > 0) {
+                    CONFIG.requiredLeads = data.requiredLeads;
+                    if (typeof updateProgress === 'function') updateProgress();
+                }
                 
                 if (data.success && data.offers?.length > 0) {
                     renderOffers(data.offers);

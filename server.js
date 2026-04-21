@@ -133,22 +133,17 @@ app.get('/api/offers', async (req, res) => {
   try {
     const niche = String(req.query.niche || '').slice(0, 120) || 'RoCrack';
 
-    // If the niche matches a DB script, its configured limits ALWAYS win
-    // (admin is the source of truth; client query params are only a fallback).
+    // Admin is ALWAYS the source of truth. Order of precedence:
+    //   1. Per-script config from DB (if this niche matches a DB script)
+    //   2. Global defaults from Settings (DB `default_*_offers`)
+    // Client-provided ?max / ?min query params are intentionally ignored so
+    // legacy pages that hardcode e.g. `max=6` cannot override the admin.
     const script = db.listScripts().find(s => s.niche === niche);
     const defMax = parseInt(db.getSetting('default_max_offers', '4'), 10) || 4;
     const defMin = parseInt(db.getSetting('default_min_offers', '2'), 10) || 2;
 
-    let maxOffers, minOffers;
-    if (script) {
-      maxOffers = script.max_offers;
-      minOffers = script.min_offers;
-    } else {
-      const qMax = parseInt(req.query.max, 10);
-      const qMin = parseInt(req.query.min, 10);
-      maxOffers = Number.isFinite(qMax) && qMax > 0 ? qMax : defMax;
-      minOffers = Number.isFinite(qMin) && qMin > 0 ? qMin : defMin;
-    }
+    let maxOffers = script ? script.max_offers : defMax;
+    let minOffers = script ? script.min_offers : defMin;
     maxOffers = Math.max(1, Math.min(20, maxOffers));
     minOffers = Math.max(1, Math.min(maxOffers, minOffers));
 
