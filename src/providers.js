@@ -14,7 +14,7 @@
  *   }
  *
  * Which provider is used is decided from the `provider` setting in DB
- * (falling back to DEFAULT_PROVIDER env var).
+ * (admin panel → Settings toggles this; defaults to "adbluemedia" on fresh install).
  */
 
 const ADBLUE = {

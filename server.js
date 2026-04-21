@@ -133,8 +133,8 @@ app.get('/api/offers', async (req, res) => {
     // If the niche matches a DB script, its configured limits ALWAYS win
     // (admin is the source of truth; client query params are only a fallback).
     const script = db.listScripts().find(s => s.niche === niche);
-    const defMax = parseInt(db.getSetting('default_max_offers', process.env.DEFAULT_MAX_OFFERS || '4'), 10) || 4;
-    const defMin = parseInt(db.getSetting('default_min_offers', process.env.DEFAULT_MIN_OFFERS || '2'), 10) || 2;
+    const defMax = parseInt(db.getSetting('default_max_offers', '4'), 10) || 4;
+    const defMin = parseInt(db.getSetting('default_min_offers', '2'), 10) || 2;
 
     let maxOffers, minOffers;
     if (script) {
@@ -149,7 +149,7 @@ app.get('/api/offers', async (req, res) => {
     maxOffers = Math.max(1, Math.min(20, maxOffers));
     minOffers = Math.max(1, Math.min(maxOffers, minOffers));
 
-    const provider = db.getSetting('provider', process.env.DEFAULT_PROVIDER || 'adbluemedia');
+    const provider = db.getSetting('provider', 'adbluemedia');
 
     const ip        = getIp(req);
     const userAgent = String(req.headers['user-agent'] || '');
@@ -161,7 +161,7 @@ app.get('/api/offers', async (req, res) => {
       success: true,
       provider,
       niche,
-      requiredLeads: script ? script.required_leads : parseInt(db.getSetting('default_required_leads', process.env.DEFAULT_REQUIRED_LEADS || '2'), 10),
+      requiredLeads: script ? script.required_leads : parseInt(db.getSetting('default_required_leads', '2'), 10) || 2,
       offers,
     });
   } catch (err) {
@@ -251,7 +251,7 @@ app.listen(PORT, HOST, () => {
   console.log(`\n🎮 RoCrack server ready`);
   console.log(`   Listening   : http://${HOST}:${PORT}`);
   console.log(`   Admin panel : ${ADMIN_PATH}`);
-  console.log(`   Provider    : ${db.getSetting('provider', process.env.DEFAULT_PROVIDER || 'adbluemedia')}`);
+  console.log(`   Provider    : ${db.getSetting('provider', 'adbluemedia')}`);
   console.log(`   DB file     : ${path.join(process.env.DATA_DIR || path.join(ROOT, 'data'), 'rocrack.sqlite')}`);
   console.log(`   Uploads dir : ${UPLOADS_DIR}\n`);
 });

@@ -57,12 +57,12 @@ See `.env.example` — copy it to `.env` and fill in. Summary of the important o
 | `ADMIN_PATH` | URL of the admin panel. Defaults `/admin`. Use something non-obvious for extra security. |
 | `JWT_SECRET`, `CSRF_SECRET`, `COOKIE_SECRET` | Three independent random 64-char secrets. |
 | `SESSION_TTL` | Session lifetime in seconds (default `28800` = 8h). |
-| `DEFAULT_PROVIDER` | `adbluemedia` or `ogads`. Initial value — can be flipped in admin UI. |
 | `ADBLUE_USER_ID`, `ADBLUE_API_KEY` | AdBlueMedia credentials (niche → `s1`). |
 | `OGADS_API_KEY`, `OGADS_ENDPOINT` | OGAds credentials (niche → `aff_sub4`, Bearer auth). |
-| `DEFAULT_MAX_OFFERS`, `DEFAULT_MIN_OFFERS`, `DEFAULT_REQUIRED_LEADS` | Fallbacks when a niche doesn't match a DB script. |
 | `DATA_DIR`, `UPLOADS_DIR` | Paths to the persisted volumes. Defaults to `./data` and `./uploads`. |
 | `TRUST_PROXY` | Set to `true` behind Cloudflare / Coolify proxy so real client IPs are read from `X-Forwarded-For`. |
+
+> **Note.** The active offer provider (`adbluemedia` / `ogads`) and the per-script offer limits (`max_offers`, `min_offers`, `required_leads`) are managed from the admin dashboard, not env vars. The public site URL is inferred from the request — no `PUBLIC_URL` setting needed.
 
 ---
 

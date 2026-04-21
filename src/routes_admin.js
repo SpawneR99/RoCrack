@@ -87,7 +87,7 @@ module.exports = function buildAdminRouter({ csrfProtection, csrfToken }) {
 
   router.get('/', auth.requireAdmin, csrfProtection, (req, res) => {
     const scripts = db.listScripts();
-    const provider = db.getSetting('provider', process.env.DEFAULT_PROVIDER || 'adbluemedia');
+    const provider = db.getSetting('provider', 'adbluemedia');
     res.render('admin/dashboard', {
       title: 'Dashboard',
       scripts,
@@ -99,10 +99,10 @@ module.exports = function buildAdminRouter({ csrfProtection, csrfToken }) {
   });
 
   router.get('/settings', auth.requireAdmin, csrfProtection, (req, res) => {
-    const provider       = db.getSetting('provider', process.env.DEFAULT_PROVIDER || 'adbluemedia');
-    const defaultMax     = db.getSetting('default_max_offers', process.env.DEFAULT_MAX_OFFERS || '4');
-    const defaultMin     = db.getSetting('default_min_offers', process.env.DEFAULT_MIN_OFFERS || '2');
-    const defaultLeads   = db.getSetting('default_required_leads', process.env.DEFAULT_REQUIRED_LEADS || '2');
+    const provider       = db.getSetting('provider', 'adbluemedia');
+    const defaultMax     = db.getSetting('default_max_offers', '4');
+    const defaultMin     = db.getSetting('default_min_offers', '2');
+    const defaultLeads   = db.getSetting('default_required_leads', '2');
     res.render('admin/settings', {
       title: 'Settings',
       provider, defaultMax, defaultMin, defaultLeads,
