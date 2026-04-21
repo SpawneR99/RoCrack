@@ -37,7 +37,7 @@ if (problems.length) {
 const ROOT        = __dirname;
 const PORT        = parseInt(process.env.PORT || '3000', 10);
 const HOST        = '0.0.0.0';
-const ADMIN_PATH  = process.env.ADMIN_PATH || '/admin';
+const ADMIN_PATH  = '/admin';
 const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(ROOT, 'uploads');
 if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 

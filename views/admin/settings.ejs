@@ -69,7 +69,6 @@
       <li>Admin credentials are stored as a bcrypt hash. Generate a new hash with: <code>npm run hash -- "your-new-password"</code> and paste into <code>ADMIN_PASSWORD_HASH</code>.</li>
       <li>Login attempts are rate-limited and logged in the audit table.</li>
       <li>All admin mutations require a double-submit CSRF token.</li>
-      <li>Change <code>ADMIN_PATH</code> in <code>.env</code> to a secret path to make the login page harder to discover.</li>
     </ul>
   </div>
 </div>

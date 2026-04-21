@@ -38,7 +38,7 @@ const loginLimiter = rateLimit({
 
 module.exports = function buildAdminRouter({ csrfProtection, csrfToken }) {
   const router = express.Router();
-  const ADMIN_PATH = process.env.ADMIN_PATH || '/admin';
+  const ADMIN_PATH = '/admin';
 
   router.use((req, res, next) => {
     res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive');

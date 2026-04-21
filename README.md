@@ -38,7 +38,7 @@ Then visit:
 
 - `http://localhost:3000/` — public site
 - `http://localhost:3000/scripts` — dynamic script listing
-- `http://localhost:3000/admin` — admin panel (configurable via `ADMIN_PATH`)
+- `http://localhost:3000/admin` — admin panel
 
 The first boot auto-seeds the 14 existing scripts (blox, garden, deadrails, …)
 into the DB as **Legacy** entries. Their static HTML pages under `scripts/<slug>/`
@@ -54,7 +54,6 @@ See `.env.example` — copy it to `.env` and fill in. Summary of the important o
 | Variable | Purpose |
 |---|---|
 | `ADMIN_USERNAME`, `ADMIN_PASSWORD_HASH` | Admin login. Hash is bcrypt (`npm run hash`). |
-| `ADMIN_PATH` | URL of the admin panel. Defaults `/admin`. Use something non-obvious for extra security. |
 | `JWT_SECRET`, `CSRF_SECRET`, `COOKIE_SECRET` | Three independent random 64-char secrets. |
 | `SESSION_TTL` | Session lifetime in seconds (default `28800` = 8h). |
 | `ADBLUE_USER_ID`, `ADBLUE_API_KEY` | AdBlueMedia credentials (niche → `s1`). |
@@ -148,8 +147,6 @@ HTML changes needed.
 - Session is an **HS256 JWT** in an **HttpOnly, SameSite=Lax, signed cookie**,
   marked `Secure` in production. Logout clears it server-side.
 - Helmet sets a strict Content-Security-Policy, disables `X-Powered-By`, etc.
-- Admin path is configurable — change `ADMIN_PATH=/your-secret-path` in `.env`
-  if you want the login page to be harder to discover.
 - Uploaded icons are served from `/uploads/*` only — the server NEVER serves
   arbitrary files from outside the workspace. Dotfiles (`/.env`) are explicitly
   denied.

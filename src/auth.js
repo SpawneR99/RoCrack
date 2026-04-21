@@ -49,7 +49,7 @@ function requireAdmin(req, res, next) {
   const sess = readSession(req);
   if (!sess || sess.kind !== 'admin') {
     if (req.method === 'GET' && req.accepts('html')) {
-      return res.redirect((process.env.ADMIN_PATH || '/admin') + '/login');
+      return res.redirect('/admin/login');
     }
     return res.status(401).json({ error: 'unauthorized' });
   }
