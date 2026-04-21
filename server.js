@@ -63,6 +63,9 @@ app.use(helmet({
     directives: {
       "default-src":   ["'self'"],
       "script-src":    ["'self'", "'unsafe-inline'", "https://ajax.googleapis.com", "https://analytics.rocrack.com", "https://cloud.umami.is"],
+      // Allow inline event handlers (onclick="...", onload="...") used by legacy script pages.
+      // Without this, Helmet's default "script-src-attr 'none'" silently breaks every onclick.
+      "script-src-attr": ["'unsafe-inline'"],
       "style-src":     ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       "font-src":      ["'self'", "https://fonts.gstatic.com", "data:"],
       "img-src":       ["'self'", "data:", "blob:", "https:"],
