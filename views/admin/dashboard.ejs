@@ -1,0 +1,81 @@
+<% const active = 'scripts'; -%>
+<%- include('partials/head') %>
+<%- include('partials/topbar', { active: active }) %>
+<div class="container">
+  <% if (flash) { %><div class="flash"><%= flash %></div><% } %>
+
+  <h1>Scripts <span class="sub">— <%= scripts.length %> total</span></h1>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="label">Active Provider</div>
+      <div class="val">
+        <span class="provider-pill"><span class="dot"></span><strong><%= provider === 'ogads' ? 'OGAds' : 'AdBlueMedia' %></strong></span>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="label">Active Scripts</div>
+      <div class="val"><%= scripts.filter(s => s.active).length %></div>
+    </div>
+    <div class="stat">
+      <div class="label">Legacy (static)</div>
+      <div class="val"><%= scripts.filter(s => s.is_legacy).length %></div>
+    </div>
+    <div class="stat">
+      <div class="label">Custom</div>
+      <div class="val"><%= scripts.filter(s => !s.is_legacy).length %></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem">
+      <h2 style="margin:0">All Scripts</h2>
+      <a href="<%= adminPath %>/scripts/new" class="btn">+ New Script</a>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Slug</th>
+          <th>Niche</th>
+          <th style="text-align:center">Req. Leads</th>
+          <th style="text-align:center">Max/Min</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% scripts.forEach(function(s) { %>
+          <tr>
+            <td class="icon-cell"><img src="<%= s.icon_path %>" alt="" onerror="this.src='/logo.png'"></td>
+            <td>
+              <strong><%= s.name %></strong>
+              <% if (s.is_legacy) { %> <span class="badge legacy">Legacy</span><% } %>
+            </td>
+            <td><code style="color:var(--muted);font-size:0.85rem"><%= s.slug %></code></td>
+            <td><code style="color:var(--muted);font-size:0.85rem"><%= s.niche %></code></td>
+            <td style="text-align:center"><%= s.required_leads %></td>
+            <td style="text-align:center"><%= s.max_offers %> / <%= s.min_offers %></td>
+            <td>
+              <% if (s.active) { %><span class="badge active">Active</span><% } else { %><span class="badge inactive">Hidden</span><% } %>
+            </td>
+            <td>
+              <div class="actions">
+                <a class="btn sm secondary" href="/scripts/<%= s.slug %>" target="_blank" rel="noopener">View</a>
+                <a class="btn sm" href="<%= adminPath %>/scripts/<%= s.id %>/edit">Edit</a>
+                <% if (!s.is_legacy) { %>
+                  <form method="POST" action="<%= adminPath %>/scripts/<%= s.id %>/delete" onsubmit="return confirm('Delete <%= s.name.replace(/\'/g,'\\\'') %>?')">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="btn sm danger" type="submit">Delete</button>
+                  </form>
+                <% } %>
+              </div>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('partials/foot') %>

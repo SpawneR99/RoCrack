@@ -1,0 +1,188 @@
+<% const active = mode === 'new' ? 'new' : 'scripts'; -%>
+<%- include('partials/head') %>
+<%- include('partials/topbar', { active: active }) %>
+<div class="container">
+  <% if (flash) { %><div class="flash"><%= flash %></div><% } %>
+
+  <h1>
+    <%= mode === 'new' ? 'Add New Script' : 'Edit Script' %>
+    <% if (script.is_legacy) { %> <span class="badge legacy">Legacy</span><% } %>
+    <% if (!script.active && mode === 'edit') { %> <span class="badge inactive">Hidden</span><% } %>
+  </h1>
+
+  <% if (script.is_legacy) { %>
+    <div class="card" style="background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.3)">
+      <p style="color:#fbbf24;font-size:0.9rem;line-height:1.6;margin:0">
+        <strong>Legacy script.</strong> The name, slug and icon of legacy scripts are managed by the static files in
+        <code>/scripts/<%= script.slug %>/</code>. You can still change its niche, offer limits and required leads — those
+        are applied globally through <code>/api/offers</code>.
+      </p>
+    </div>
+  <% } %>
+
+  <form method="POST"
+        action="<%= mode === 'new' ? adminPath + '/scripts/new' : adminPath + '/scripts/' + script.id + '/edit' %>"
+        enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <div class="card">
+      <h3>Basics</h3>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Display Name</label>
+          <input type="text" id="name" name="name" required maxlength="120"
+                 value="<%= script.name %>" <%= script.is_legacy ? 'readonly' : '' %>>
+          <% if (errors && errors.name) { %><div class="err"><%= errors.name %></div><% } %>
+        </div>
+        <div class="form-field">
+          <label for="slug">Slug (URL)</label>
+          <input type="text" id="slug" name="slug" required maxlength="60" pattern="[a-z0-9][a-z0-9-]*"
+                 value="<%= script.slug %>" <%= script.is_legacy ? 'readonly' : '' %>>
+          <div class="hint">Final URL: <code>/scripts/<%= script.slug || 'your-slug' %></code></div>
+          <% if (errors && errors.slug) { %><div class="err"><%= errors.slug %></div><% } %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="niche">Offer Niche / Sub-ID</label>
+          <input type="text" id="niche" name="niche" required maxlength="80" value="<%= script.niche %>">
+          <div class="hint">Passed as <code>s1</code> (AdBlueMedia) / <code>aff_sub4</code> (OGAds). Example: <code>RoCrackFruits</code></div>
+          <% if (errors && errors.niche) { %><div class="err"><%= errors.niche %></div><% } %>
+        </div>
+        <div class="form-field">
+          <label for="sort_order">Sort Order</label>
+          <input type="number" id="sort_order" name="sort_order" value="<%= script.sort_order %>">
+          <div class="hint">Lower numbers show first.</div>
+        </div>
+      </div>
+
+      <% if (!script.is_legacy) { %>
+        <div class="form-field">
+          <label for="icon">Icon Image</label>
+          <input type="file" id="icon" name="icon" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml">
+          <div class="hint">
+            <% if (script.icon_path) { %>
+              Current: <img src="<%= script.icon_path %>" style="height:28px;width:28px;vertical-align:middle;border-radius:4px;border:1px solid var(--border);object-fit:cover"> <code><%= script.icon_path %></code>.
+            <% } %>
+            Upload PNG / JPG / WEBP / SVG — max 3 MB. Leave empty to keep current.
+          </div>
+        </div>
+      <% } %>
+
+      <div class="form-field">
+        <label for="tagline">Tagline / Subtitle</label>
+        <input type="text" id="tagline" name="tagline" maxlength="300" value="<%= script.tagline %>">
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Offer Locker Settings</h3>
+      <div class="form-row three">
+        <div class="form-field">
+          <label for="required_leads">Required Leads</label>
+          <input type="number" id="required_leads" name="required_leads" min="1" max="20" value="<%= script.required_leads %>">
+          <div class="hint">Completed offers needed to unlock.</div>
+          <% if (errors && errors.required_leads) { %><div class="err"><%= errors.required_leads %></div><% } %>
+        </div>
+        <div class="form-field">
+          <label for="max_offers">Max Offers Shown</label>
+          <input type="number" id="max_offers" name="max_offers" min="1" max="20" value="<%= script.max_offers %>">
+          <% if (errors && errors.max_offers) { %><div class="err"><%= errors.max_offers %></div><% } %>
+        </div>
+        <div class="form-field">
+          <label for="min_offers">Min Offers (OGAds)</label>
+          <input type="number" id="min_offers" name="min_offers" min="1" max="20" value="<%= script.min_offers %>">
+          <% if (errors && errors.min_offers) { %><div class="err"><%= errors.min_offers %></div><% } %>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="video_url">Tutorial Video URL (optional)</label>
+        <input type="url" id="video_url" name="video_url" maxlength="500" value="<%= script.video_url %>">
+        <div class="hint">Shown as "Watch tutorial" card on the locker page.</div>
+      </div>
+    </div>
+
+    <% if (!script.is_legacy) { %>
+      <div class="card">
+        <h3>Hubs / Versions</h3>
+        <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1rem">
+          List of script hubs / versions shown on the script page (e.g. <em>Overflow — 4.2M downloads</em>).
+        </p>
+        <div id="hubs-container">
+          <% (script.hubs && script.hubs.length ? script.hubs : [{name:'', downloads:''}]).forEach(function(h) { %>
+            <div class="hub-row">
+              <input type="text" name="hub_name"      placeholder="Hub name (e.g. Overflow Hub)" value="<%= h.name %>">
+              <input type="text" name="hub_downloads" placeholder="Downloads (e.g. 4.2M)"        value="<%= h.downloads %>">
+              <button type="button" class="del" onclick="this.parentElement.remove()">×</button>
+            </div>
+          <% }); %>
+        </div>
+        <button type="button" class="btn sm secondary" onclick="addHub()">+ Add Hub</button>
+      </div>
+
+      <div class="card">
+        <h3>SEO Metadata</h3>
+        <div class="form-field">
+          <label for="meta_title">Meta Title</label>
+          <input type="text" id="meta_title" name="meta_title" maxlength="200" value="<%= script.meta_title %>">
+        </div>
+        <div class="form-field">
+          <label for="meta_description">Meta Description</label>
+          <textarea id="meta_description" name="meta_description" maxlength="400"><%= script.meta_description %></textarea>
+        </div>
+        <div class="form-field">
+          <label for="meta_keywords">Meta Keywords</label>
+          <input type="text" id="meta_keywords" name="meta_keywords" maxlength="400" value="<%= script.meta_keywords %>">
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Description / Long Content</h3>
+        <div class="form-field">
+          <label for="description">Description (HTML allowed)</label>
+          <textarea id="description" name="description" class="large"><%= script.description %></textarea>
+          <div class="hint">Shown on the script page below the hero. Basic HTML tags (<code>p, h2, h3, ul, li, strong, a</code>) are fine.</div>
+        </div>
+      </div>
+    <% } %>
+
+    <div class="card">
+      <h3>Visibility</h3>
+      <div class="checkbox-field">
+        <input type="checkbox" id="active" name="active" <%= script.active ? 'checked' : '' %>>
+        <label for="active">Active (visible on the public site)</label>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+      <button type="submit" class="btn"><%= mode === 'new' ? 'Create Script' : 'Save Changes' %></button>
+      <a href="<%= adminPath %>" class="btn ghost">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<script>
+function addHub() {
+  const c = document.getElementById('hubs-container');
+  const row = document.createElement('div');
+  row.className = 'hub-row';
+  row.innerHTML =
+    '<input type="text" name="hub_name" placeholder="Hub name (e.g. Overflow Hub)">' +
+    '<input type="text" name="hub_downloads" placeholder="Downloads (e.g. 4.2M)">' +
+    '<button type="button" class="del" onclick="this.parentElement.remove()">&times;</button>';
+  c.appendChild(row);
+}
+(function autoSlug() {
+  const name = document.getElementById('name');
+  const slug = document.getElementById('slug');
+  if (!name || !slug || slug.readOnly) return;
+  name.addEventListener('input', function() {
+    if (slug.dataset.manual === '1') return;
+    slug.value = name.value.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+  });
+  slug.addEventListener('input', function() { slug.dataset.manual = '1'; });
+})();
+</script>
+<%- include('partials/foot') %>

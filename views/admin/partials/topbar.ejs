@@ -1,0 +1,16 @@
+<div class="topbar">
+  <a href="<%= adminPath %>" class="brand">
+    <img src="/logo.png" alt="RoCrack"> RoCrack Admin
+  </a>
+  <div class="spacer"></div>
+  <nav>
+    <a href="<%= adminPath %>"           class="<%= typeof active !== 'undefined' && active === 'scripts'  ? 'active' : '' %>">Scripts</a>
+    <a href="<%= adminPath %>/scripts/new" class="<%= typeof active !== 'undefined' && active === 'new'      ? 'active' : '' %>">+ New Script</a>
+    <a href="<%= adminPath %>/settings"  class="<%= typeof active !== 'undefined' && active === 'settings' ? 'active' : '' %>">Settings</a>
+    <a href="/" target="_blank" rel="noopener">View Site ↗</a>
+  </nav>
+  <form method="POST" action="<%= adminPath %>/logout">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button type="submit" class="logout-btn">Logout</button>
+  </form>
+</div>

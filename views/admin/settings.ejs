@@ -1,0 +1,76 @@
+<% const active = 'settings'; -%>
+<%- include('partials/head') %>
+<%- include('partials/topbar', { active: active }) %>
+<div class="container">
+  <% if (flash) { %><div class="flash"><%= flash %></div><% } %>
+  <h1>General Settings</h1>
+
+  <form method="POST" action="<%= adminPath %>/settings">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <div class="card">
+      <h3>Offer Delivery Provider</h3>
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;line-height:1.6">
+        Choose which ad network delivers offers across the entire site. You can flip this at any time —
+        all existing locker pages will pick up the change immediately on the next offer load.
+        Secrets for both networks are loaded from environment variables only; they are never written to
+        the database.
+      </p>
+
+      <div class="form-row">
+        <label style="display:flex;align-items:flex-start;gap:0.75rem;background:var(--bg2);border:2px solid <%= provider === 'adbluemedia' ? 'var(--primary)' : 'var(--border)' %>;border-radius:10px;padding:1rem;cursor:pointer;text-transform:none;letter-spacing:normal;font-weight:500;color:var(--text)">
+          <input type="radio" name="provider" value="adbluemedia" <%= provider === 'adbluemedia' ? 'checked' : '' %> style="margin-top:0.2rem;accent-color:var(--primary)">
+          <span>
+            <strong style="display:block;margin-bottom:0.25rem">AdBlueMedia</strong>
+            <span style="color:var(--muted);font-size:0.82rem">Niche goes to <code>s1</code>. Uses <code>ADBLUE_USER_ID</code> &amp; <code>ADBLUE_API_KEY</code>.</span>
+          </span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:0.75rem;background:var(--bg2);border:2px solid <%= provider === 'ogads' ? 'var(--primary)' : 'var(--border)' %>;border-radius:10px;padding:1rem;cursor:pointer;text-transform:none;letter-spacing:normal;font-weight:500;color:var(--text)">
+          <input type="radio" name="provider" value="ogads" <%= provider === 'ogads' ? 'checked' : '' %> style="margin-top:0.2rem;accent-color:var(--primary)">
+          <span>
+            <strong style="display:block;margin-bottom:0.25rem">OGAds</strong>
+            <span style="color:var(--muted);font-size:0.82rem">Niche goes to <code>aff_sub4</code>. Uses <code>OGADS_API_KEY</code> (Bearer auth).</span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Default Offer Limits</h3>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1rem">
+        These apply to any script that doesn't have its own override, and to legacy pages that don't send an explicit limit.
+      </p>
+      <div class="form-row three">
+        <div class="form-field">
+          <label for="default_max_offers">Default Max Offers</label>
+          <input type="number" id="default_max_offers" name="default_max_offers" min="1" max="20" value="<%= defaultMax %>">
+        </div>
+        <div class="form-field">
+          <label for="default_min_offers">Default Min Offers</label>
+          <input type="number" id="default_min_offers" name="default_min_offers" min="1" max="20" value="<%= defaultMin %>">
+          <div class="hint">OGAds only — how many offers to accept as "enough" even if some are blocked.</div>
+        </div>
+        <div class="form-field">
+          <label for="default_required_leads">Default Required Leads</label>
+          <input type="number" id="default_required_leads" name="default_required_leads" min="1" max="50" value="<%= defaultLeads %>">
+          <div class="hint">How many completed offers unlock the content.</div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">Save Settings</button>
+    <a href="<%= adminPath %>" class="btn ghost">Cancel</a>
+  </form>
+
+  <div class="card" style="margin-top:2rem">
+    <h3>Security Notes</h3>
+    <ul style="color:var(--muted);font-size:0.88rem;line-height:1.8;padding-left:1.25rem">
+      <li>All API keys (AdBlueMedia, OGAds) are loaded only from environment variables.</li>
+      <li>Admin credentials are stored as a bcrypt hash. Generate a new hash with: <code>npm run hash -- "your-new-password"</code> and paste into <code>ADMIN_PASSWORD_HASH</code>.</li>
+      <li>Login attempts are rate-limited and logged in the audit table.</li>
+      <li>All admin mutations require a double-submit CSRF token.</li>
+      <li>Change <code>ADMIN_PATH</code> in <code>.env</code> to a secret path to make the login page harder to discover.</li>
+    </ul>
+  </div>
+</div>
+<%- include('partials/foot') %>

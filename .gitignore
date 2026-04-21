@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+
+# Persisted runtime data (mounted as Coolify volumes)
+data/
+uploads/
+*.sqlite
+*.sqlite-journal
+*.db
+*.db-journal

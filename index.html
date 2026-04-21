@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoCrack - Free Roblox Scripts & Delta Executor 2026</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="RoCrack — #1 free source for Roblox scripts, Delta Executor download (mobile & PC), Blox Fruits scripts, auto-farm hubs, and 50+ premium game scripts. Updated daily 2026. Safe, fast, free.">
+    <meta name="keywords" content="Roblox scripts, Delta Executor, Delta Executor download, Delta Executor mobile, Delta Executor key, Blox Fruits script, free Roblox scripts, Roblox executor, Roblox executor download, auto farm script, Roblox hacks 2026, Roblox exploits, Roblox script hub, Rivals script, Fisch script, Brookhaven script, Roblox mobile executor, Delta Executor APK, RoCrack, script executor Roblox">
+    <meta name="author" content="RoCrack">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://RoCrack.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://RoCrack.com/">
+    <meta property="og:title" content="RoCrack - Free Roblox Scripts & Delta Executor 2026">
+    <meta property="og:description" content="The #1 source for free Roblox scripts, Delta Executor, and premium gaming tools. Get Blox Fruits scripts, auto-farm hubs, and more!">
+    <meta property="og:image" content="https://RoCrack.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="RoCrack">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://RoCrack.com/">
+    <meta name="twitter:title" content="RoCrack - Free Roblox Scripts & Delta Executor 2026">
+    <meta name="twitter:description" content="The #1 source for free Roblox scripts, Delta Executor, and premium gaming tools. Updated daily!">
+    <meta name="twitter:image" content="https://RoCrack.com/og-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="apple-touch-icon" href="/logo.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#22c55e">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #22c55e;
+            --primary-glow: rgba(34, 197, 94, 0.4);
+            --primary-dark: #16a34a;
+            --primary-soft: rgba(34, 197, 94, 0.08);
+            --secondary: #10b981;
+            --secondary-glow: rgba(16, 185, 129, 0.25);
+            --bg-dark: #09090b;
+            --bg-darker: #050506;
+            --bg-card: rgba(16, 16, 20, 0.85);
+            --bg-card-hover: rgba(22, 22, 30, 0.95);
+            --text-primary: #f0f0f5;
+            --text-secondary: #9898ad;
+            --text-muted: #55556a;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.08);
+            --danger-border: rgba(239, 68, 68, 0.3);
+            --radius: 16px;
+        }
+
+        .privacy-notice {
+            background: var(--danger-bg);
+            border: 2px solid var(--danger-border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .privacy-notice p {
+            color: #fca5a5;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .privacy-notice strong {
+            color: var(--danger);
+            font-weight: 700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            font-size: 15px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Subtle Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 70% 50% at 50% -20%, rgba(34, 197, 94, 0.08), transparent 60%),
+                radial-gradient(ellipse 50% 50% at 80% 50%, rgba(34, 197, 94, 0.03), transparent 60%),
+                radial-gradient(ellipse 40% 50% at 20% 80%, rgba(16, 185, 129, 0.02), transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 1.5px;
+            height: 1.5px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--primary-glow);
+            animation: float 20s infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Remove scanlines for cleaner look */
+        .scanlines {
+            display: none;
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header / Navigation */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .logo-icon::after {
+            content: '⚡';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-stats {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        .stat-dot.online { background: var(--success); box-shadow: 0 0 8px rgba(34, 197, 94, 0.5); }
+        .stat-dot.update { background: var(--warning); box-shadow: 0 0 8px rgba(245, 158, 11, 0.5); }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1.2rem;
+            background: var(--primary-soft);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--primary), #4ade80);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 0.6rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .hero-formerly {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .trust-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .trust-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 3rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-line {
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem 1.75rem;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--card-color), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--card-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-hover);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover::after {
+            opacity: 0.6;
+        }
+
+        .feature-card.executor {
+            --card-color: var(--primary);
+            --card-glow: rgba(34, 197, 94, 0.08);
+        }
+
+        .feature-card.scripts {
+            --card-color: var(--secondary);
+            --card-glow: rgba(16, 185, 129, 0.08);
+        }
+
+        .card-icon-wrapper {
+            position: relative;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-icon-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--card-color), transparent);
+            border-radius: 14px;
+            opacity: 0.12;
+        }
+
+        .feature-card:hover .card-icon-bg {
+            opacity: 0.2;
+        }
+
+        .card-icon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover .card-icon {
+            transform: scale(1.05);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            padding: 0.2rem 0.6rem;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--card-color);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-feature {
+            padding: 0.2rem 0.6rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+        }
+
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.4rem;
+            background: var(--card-color);
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-decoration: none;
+            margin-top: auto;
+        }
+
+        .card-cta:hover {
+            box-shadow: 0 6px 20px var(--card-glow);
+            transform: translateY(-1px);
+        }
+
+        .card-cta svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.25s;
+        }
+
+        .card-cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding: 2.5rem 0 1.5rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .footer-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.25s;
+        }
+
+        .footer-link:hover {
+            color: var(--text-secondary);
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            max-width: 400px;
+            line-height: 1.5;
+        }
+
+        .footer-copyright {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .nav-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 2.5rem 0 2rem;
+            }
+
+            .trust-indicators {
+                gap: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                max-width: 380px;
+            }
+
+            .feature-card {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .hero::before {
+                width: 300px;
+                height: 300px;
+            }
+
+            .live-banner {
+                padding: 0.4rem 0.8rem;
+            }
+
+            .live-text {
+                font-size: 0.65rem;
+                letter-spacing: 1px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.6rem;
+                letter-spacing: 1px;
+            }
+
+            .trust-indicators {
+                gap: 1rem;
+            }
+
+            .trust-value {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Glow text utility */
+        .glow-text {
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        /* Animation delays for stagger effect */
+        .feature-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.15s both; }
+        .feature-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.25s both; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero { animation: fadeInUp 0.6s ease-out; }
+
+        /* Live Banner */
+        .live-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.45rem 1.2rem;
+            background: rgba(34, 197, 94, 0.06);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+            animation: live-blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes live-blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        .live-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--success);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .live-text span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Logo Image */
+        .logo-image {
+            height: 60px;
+            width: auto;
+            transition: all 0.25s;
+        }
+
+        .logo-container:hover .logo-image {
+            transform: scale(1.03);
+        }
+
+        /* SEO Content Section */
+        .seo-content {
+            margin-top: 3rem;
+            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seo-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.3), transparent);
+        }
+
+        .seo-content h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.3px;
+            margin: 2.5rem 0 0.8rem;
+        }
+
+        .seo-content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .seo-content h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .seo-content p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.75;
+            margin-bottom: 0.8rem;
+        }
+
+        .seo-content ul, .seo-content ol {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.75;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+        }
+
+        .seo-content li {
+            margin-bottom: 0.35rem;
+        }
+
+        .seo-content strong {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .seo-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .seo-content a:hover {
+            text-decoration: underline;
+        }
+
+        .seo-content .faq-item {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .seo-content .faq-item h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .seo-content .faq-item p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .seo-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .seo-content h2 {
+                font-size: 1.05rem;
+            }
+
+            .seo-content h3 {
+                font-size: 0.92rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "RoCrack",
+        "url": "https://RoCrack.com",
+        "description": "The #1 source for free Roblox scripts, Delta Executor download, and premium gaming tools.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://RoCrack.com/scripts/{search_term}",
+            "query-input": "required name=search_term"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is RoCrack?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "RoCrack is the #1 free platform for Roblox scripts, Delta Executor downloads, and premium gaming tools. We provide verified, safe, and regularly updated scripts for all popular Roblox games."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Delta Executor free to download?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Delta Executor is completely free to download and use through RoCrack. We provide genuine Delta Executor downloads for both mobile and PC platforms at no cost."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use Delta Executor on my phone?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. Delta Executor is the only Roblox executor that supports mobile devices including Android and iOS. RoCrack is the official source for Delta Executor mobile download."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are the scripts on RoCrack safe?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Every script on RoCrack is tested and verified by our security team before being published. We never distribute scripts containing malware, viruses, or harmful code."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which Roblox games do your scripts support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "RoCrack offers scripts for 14+ popular games including Blox Fruits, Rivals, Fisch, Grow a Garden, Brookhaven, Dead Rails, Anime Defenders, Pet Simulator, and many more."
+                }
+            }
+        ]
+    }
+    </script>
+      <script defer src="https://analytics.ufomedia.xyz/script.js" data-website-id="2418580b-7c61-4c49-aa38-6798ab7c5af9"></script>
+</head>
+  <body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="particles" id="particles"></div>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="logo.png" alt="RoCrack Logo" class="logo-image">
+            </div>
+            <div class="nav-stats">
+                <div class="stat-badge">
+                    <span class="stat-dot online"></span>
+                    <span id="onlineCount">847</span> ONLINE
+        </div>
+                <div class="stat-badge">
+                    <span class="stat-dot update"></span>
+                    UPDATED <span id="updateDate">DEC 2026</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="live-banner">
+                <span class="live-dot"></span>
+                <span class="live-text"><span>RoCrack v3</span> — now live</span>
+            </div>
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                #1 Script Aggregator
+            </div>
+            <h1 class="hero-title">
+                <span class="highlight">RoCrack</span><br>
+                Roblox Tools & Scripts
+            </h1>
+            <p class="hero-subtitle">
+                The best Delta Executor installation and key generation tool. 
+                Your all-in-one solution for executors, scripts & keys — completely free.
+            </p>
+            <p class="hero-formerly">Trusted by Millions</p>
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <span class="trust-value" id="totalDownloads">12.4M+</span>
+                    <span class="trust-label">Downloads</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-value">99.9%</span>
+                    <span class="trust-label">Uptime</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-value">24/7</span>
+                    <span class="trust-label">Support</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-value">100%</span>
+                    <span class="trust-label">Safe</span>
+                </div>
+            </div>
+
+            <div class="privacy-notice">
+                <p>&#9888; <strong>WE NEVER ASK FOR YOUR PERSONAL DATA.</strong> RoCrack will never request your Roblox password, email, or any personal information. The <strong>ONLY</strong> thing we ask for is your <strong>Roblox username</strong> — which is publicly visible to everyone. <strong>Never share your password with anyone.</strong></p>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Tool</h2>
+                <div class="section-line"></div>
+        </div>
+
+            <div class="features-grid">
+                <!-- Executor Card -->
+                <a href="script/index.html" class="feature-card executor">
+                    <span class="card-badge">Popular</span>
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon-bg"></div>
+                        <img src="delta.png" alt="Delta Executor" class="card-icon">
+                    </div>
+                    <h3 class="card-title">Delta Executor</h3>
+                    <p class="card-description">
+                        Run scripts with the most powerful Roblox executor. Instant key generation, auto-updates, mobile & PC.
+                    </p>
+                    <div class="card-features">
+                        <span class="card-feature">Auto-Update</span>
+                        <span class="card-feature">Anti-Ban</span>
+                        <span class="card-feature">Mobile</span>
+                    </div>
+                    <span class="card-cta">
+                        Get Executor
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Scripts Card -->
+                <a href="scripts/index.html" class="feature-card scripts">
+                    <span class="card-badge">50+ Games</span>
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon-bg"></div>
+                        <img src="script.png" alt="Scripts" class="card-icon">
+                    </div>
+                    <h3 class="card-title">Script Library</h3>
+                    <p class="card-description">
+                        Premium scripts for all popular Roblox games. Verified, safe, and updated daily.
+                    </p>
+                    <div class="card-features">
+                        <span class="card-feature">Blox Fruits</span>
+                        <span class="card-feature">Rivals</span>
+                        <span class="card-feature">Fisch</span>
+                        <span class="card-feature">+50 more</span>
+                    </div>
+                    <span class="card-cta">
+                        Browse Scripts
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="seo-content">
+            <h2>RoCrack — The #1 Source for Free Roblox Scripts &amp; Delta Executor in 2026</h2>
+            <p><strong>RoCrack</strong> is the world's leading platform for <strong>free Roblox scripts</strong> and the official source for <strong>Delta Executor download</strong>. Since our founding, we have served over 15 million Roblox players worldwide, providing them with the tools, scripts, and resources they need to enhance their gaming experience across thousands of Roblox games. In 2026, RoCrack continues to set the industry standard for quality, safety, reliability, and innovation in the Roblox scripting ecosystem.</p>
+            <p>Our platform brings together two essential services under one roof: a comprehensive <strong>script library</strong> with verified scripts for 50+ popular Roblox games, and the most powerful <strong>Roblox executor</strong> available on both mobile and PC. This unique combination makes RoCrack a one-stop destination for everything a Roblox player needs to take their gaming to the next level.</p>
+            <p>Every resource on RoCrack is <strong>completely free</strong> — no premium tiers, no subscriptions, no hidden charges. We are committed to democratizing access to Roblox scripting tools and ensuring that every player, regardless of their financial situation, can enjoy the enhanced gaming experience that scripts and executors provide.</p>
+
+            <h2>Delta Executor — The World's Best Free Roblox Executor</h2>
+            <p><strong>Delta Executor</strong> is the most downloaded, most trusted, and most powerful <strong>Roblox executor</strong> available in 2026, with over 12 million downloads from users around the globe. What makes Delta Executor truly revolutionary is its complete support for <strong>mobile devices</strong> — it is the only Roblox executor that works flawlessly on <strong>Android, iOS, and PC</strong> with identical features and capabilities across every platform. No other executor on the market offers genuine, full-featured mobile support.</p>
+
+            <h3>Why Delta Executor Dominates the Market</h3>
+            <ul>
+                <li><strong>Level 8 Execution Engine</strong> — The most powerful execution engine available, capable of running the most complex and demanding Roblox scripts with perfect reliability and performance.</li>
+                <li><strong>Full Mobile Support</strong> — Complete executor functionality on Android and iOS devices, with a touch-optimized interface and efficient resource usage. The only mobile executor with full feature parity to the desktop version.</li>
+                <li><strong>Advanced Anti-Ban Technology</strong> — Multi-layered detection evasion system including memory obfuscation, process hiding, signature randomization, and behavioral anti-detection that provides the lowest ban rate in the industry.</li>
+                <li><strong>Auto-Update System</strong> — Automatically downloads and applies compatibility fixes within hours of Roblox updates. You never need to manually update Delta — it handles everything in the background.</li>
+                <li><strong>Built-In Script Hub</strong> — Access thousands of scripts directly within the executor through the integrated RoCrack script library.</li>
+                <li><strong>Key System</strong> — Simple, fast key generation through RoCrack ensures secure access for all legitimate users.</li>
+            </ul>
+            <p>Download <strong>Delta Executor</strong> exclusively from RoCrack to guarantee you receive the genuine, latest, and malware-free version. Third-party sources frequently distribute modified or infected versions that put your accounts and devices at risk.</p>
+
+            <h2>Roblox Script Library — 50+ Games, Hundreds of Scripts</h2>
+            <p>RoCrack hosts the <strong>largest verified collection of free Roblox scripts</strong> available on the internet. Our library covers every major game on Roblox with multiple script options for each, ranging from comprehensive hub scripts to specialized automation tools. Here is an overview of our most popular game categories:</p>
+
+            <h3>Blox Fruits Scripts</h3>
+            <p>The most extensive <strong>Blox Fruits script</strong> collection available, featuring top hubs like Overflow (4.2M+ downloads), Soluna (3.9M+), and Mango Hub (1.2M+). Complete auto-farm systems for all three seas, fruit ESP and fruit snipers, combat enhancement including kill aura and auto-combo, boss farming routines, and full teleportation systems. Level from 1 to max in 24-48 hours with our optimized farming scripts.</p>
+
+            <h3>Brookhaven Scripts</h3>
+            <p>The most fun and feature-rich <strong>Brookhaven scripts</strong> for Roblox's most popular roleplay game. Admin commands, vehicle spawning and modification, creative trolling tools including player fling and character scaling, roleplay enhancements, and more. Transform Brookhaven into your ultimate playground.</p>
+
+            <h3>Rivals Scripts</h3>
+            <p>Dominate Roblox's most competitive FPS with premium <strong>Rivals scripts</strong> featuring silent aimbot, comprehensive ESP overlays, movement enhancements like no recoil and speed boost, and combat modifications. Climb the ranked leaderboards with precision-engineered scripting tools.</p>
+
+            <h3>Fisch Scripts</h3>
+            <p>Catch every fish in the game with our <strong>Fisch scripts</strong>. Auto-fish with perfect minigame completion, location teleportation across all biomes, fish ESP for rare spawn detection, auto-sell inventory management, and collection tracking. Build the ultimate fish collection effortlessly.</p>
+
+            <h3>Grow a Garden Scripts</h3>
+            <p>Automate your entire farming empire with <strong>Grow a Garden scripts</strong>. Auto-plant, auto-water, auto-harvest, auto-sell at optimal prices, auto-upgrade your tools and plots. Complete farming automation that runs 24/7 on autopilot.</p>
+
+            <h3>Dead Rails Scripts</h3>
+            <p>Survive every zombie wave with <strong>Dead Rails scripts</strong> featuring god mode, aimbot, infinite ammo, kill aura, and comprehensive ESP. Auto-farm through waves for currency and XP while AFK.</p>
+
+            <h3>And Many More</h3>
+            <p>RoCrack also provides scripts for <strong>Brainrot, Forsaken, Forest, Island, Volleyball, Plants vs Brainrots, Arise, Fish It</strong>, and numerous other popular Roblox games. Our library grows every week as new games gain popularity and our development team creates scripts to match.</p>
+
+            <h2>Why 15 Million Players Trust RoCrack</h2>
+
+            <h3>Safety First</h3>
+            <p>Every script, every executor build, and every download on RoCrack undergoes thorough security verification. Our multi-step safety process includes automated malware scanning, manual code review, functionality testing, and community feedback monitoring. We take your account security and device safety seriously — it is the foundation of our reputation.</p>
+
+            <h3>Always Free</h3>
+            <p>RoCrack has been free since day one and will remain free forever. We fund our operations through advertising partnerships, not user payments. Every script and every Delta Executor download is available at zero cost to our users.</p>
+
+            <h3>Constant Updates</h3>
+            <p>Our team works around the clock to keep everything current. When Roblox updates, when games patch, when new content drops — RoCrack responds within hours with updated scripts and executor compatibility fixes. You can always count on RoCrack being up-to-date.</p>
+
+            <h3>Cross-Platform Excellence</h3>
+            <p>RoCrack and Delta Executor work seamlessly on every platform where Roblox is available. <strong>Android phones and tablets, iPhones and iPads, Windows PCs</strong> — every user gets the full experience regardless of their device. Our commitment to mobile support sets us apart from competitors who treat mobile users as an afterthought.</p>
+
+            <h3>Community Driven</h3>
+            <p>RoCrack is powered by a passionate community of millions of Roblox enthusiasts. User feedback drives our development priorities, community reports help us maintain script quality, and collaborative sharing helps everyone discover the best scripts and strategies. Join the RoCrack community and become part of the world's largest Roblox scripting ecosystem.</p>
+
+            <h2>How to Get Started with RoCrack — Quick Start Guide</h2>
+            <ol>
+                <li><strong>Download Delta Executor</strong> — Visit the Delta Executor page, enter your Roblox Username, and download Delta for your platform (Android, iOS, or PC).</li>
+                <li><strong>Generate Your Key</strong> — Complete the quick verification process to receive your Delta activation key.</li>
+                <li><strong>Install &amp; Activate</strong> — Install Delta Executor on your device and activate it with your key.</li>
+                <li><strong>Browse Scripts</strong> — Visit our Script Library and find scripts for your favorite Roblox games.</li>
+                <li><strong>Join a Game</strong> — Open Roblox and join the game you want to enhance.</li>
+                <li><strong>Inject &amp; Execute</strong> — Open Delta Executor, inject into Roblox, paste your script, and execute.</li>
+                <li><strong>Enjoy Enhanced Gaming</strong> — Configure your script's features and enjoy the ultimate Roblox experience.</li>
+            </ol>
+
+            <h2>Frequently Asked Questions — RoCrack</h2>
+            <div class="faq-item">
+                <h4>What is RoCrack?</h4>
+                <p>RoCrack is the world's leading platform for free Roblox scripts and the official source for Delta Executor downloads. Over 15 million players trust RoCrack for their Roblox enhancement needs.</p>
+                    </div>
+            <div class="faq-item">
+                <h4>Is RoCrack safe?</h4>
+                <p>Yes. All scripts are malware-scanned and verified, Delta Executor builds are security-tested, and we never ask for passwords or sensitive information. Safety is our top priority.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is everything on RoCrack free?</h4>
+                <p>Yes, 100%. Every script, every Delta Executor download, and every feature is completely free with no premium tiers or hidden charges.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Does RoCrack work on mobile?</h4>
+                <p>Absolutely. Delta Executor is the only Roblox executor with full mobile support on Android and iOS. All RoCrack scripts are tested and verified for mobile compatibility.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What games have scripts available?</h4>
+                <p>RoCrack covers 50+ popular Roblox games including Blox Fruits, Brookhaven, Rivals, Fisch, Grow a Garden, Dead Rails, and many more. Our library grows continuously.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How do I download Delta Executor?</h4>
+                <p>Visit the Delta Executor page on RoCrack, enter your Roblox Username, complete the verification, and download Delta for your platform. The process takes less than 5 minutes.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How often is RoCrack updated?</h4>
+                <p>Our team works 24/7 to keep scripts, Delta Executor, and all content current. Updates are typically pushed within hours of Roblox and game patches.</p>
+            </div>
+
+            <p><strong>RoCrack</strong> is your ultimate destination for everything Roblox scripting. From the most powerful executor on the market to the largest script library available, and comprehensive game guides — RoCrack has everything you need to transform your Roblox experience. Join 15 million players who have already discovered the RoCrack difference. Start exploring today and unlock the full potential of Roblox gaming.</p>
+
+
+            <h2>The RoCrack Ecosystem — Understanding Our Complete Platform</h2>
+            <p>RoCrack is not simply a collection of downloadable scripts — it is a complete, integrated ecosystem designed to provide the ultimate Roblox enhancement experience. Our platform has been meticulously built over years of development, incorporating feedback from millions of users to create the most user-friendly, reliable, and comprehensive scripting resource available anywhere. Understanding the full scope of what RoCrack offers helps you take maximum advantage of every feature and tool at your disposal.</p>
+            <p>At the heart of the RoCrack ecosystem is <strong>Delta Executor</strong> — the engine that powers everything. Without a capable executor, scripts are just text files that cannot do anything. Delta Executor bridges the gap between script code and actual game functionality, injecting scripts into Roblox's runtime environment and enabling them to interact with game systems. The fact that Delta operates at Level 8 — the highest possible execution level — means every script in our library runs at maximum capability and compatibility.</p>
+            <p>Surrounding Delta Executor is our massive <strong>script library</strong>, which functions as a curated, verified repository of the best Roblox scripts available. Unlike raw script-sharing forums where quality varies wildly and malware is common, RoCrack's library is professionally managed with strict quality standards, security verification, and regular update cycles. Every script is hand-tested by our team before publication, ensuring that users never encounter broken, malicious, or outdated scripts.</p>
+
+            <h2>Platform Statistics &amp; Milestones</h2>
+            <p>RoCrack's growth reflects the trust and satisfaction of our user base:</p>
+            <ul>
+                <li><strong>15+ Million Total Users</strong> — Over 15 million unique Roblox players have used RoCrack's services since our launch.</li>
+                <li><strong>12+ Million Delta Downloads</strong> — Delta Executor has been downloaded over 12 million times across all platforms.</li>
+                <li><strong>50+ Games Supported</strong> — Our script library covers more than 50 of the most popular Roblox games.</li>
+                <li><strong>500+ Individual Scripts</strong> — Over 500 verified scripts are available in our library.</li>
+                <li><strong>24/7 Update Monitoring</strong> — Our team monitors game and Roblox updates around the clock.</li>
+                <li><strong>Average Update Time: 4 Hours</strong> — Script compatibility fixes are typically pushed within 4 hours of game patches.</li>
+                <li><strong>99.9% Uptime</strong> — RoCrack maintains near-perfect availability for script downloads and key generation.</li>
+            </ul>
+
+            <h2>RoCrack for Different Player Types</h2>
+            <h3>For Casual Players</h3>
+            <p>If you play Roblox casually — a few hours per week in your favorite games — RoCrack helps you make the most of your limited gaming time. Auto-farm scripts can progress your character while you handle real-life responsibilities, ensuring you keep up with friends who play more frequently. Simple quality-of-life scripts like teleportation and speed boosts eliminate time wasted on travel and navigation, letting you focus on the fun parts of each game.</p>
+
+            <h3>For Competitive Players</h3>
+            <p>If you take Roblox gaming seriously and compete in ranked modes, leaderboards, and tournaments, RoCrack provides the edge that separates good players from dominant ones. ESP scripts give you information advantages that transform your tactical awareness. Combat scripts ensure your mechanical execution is frame-perfect. And progression scripts keep your character and equipment at maximum level and optimization, so you are always ready for competitive play.</p>
+
+            <h3>For Completionists</h3>
+            <p>If you are driven by the urge to collect everything, complete every achievement, and max out every system in your favorite games, RoCrack's automation tools are indispensable. Collection-focused scripts systematically hunt down every item, character, and unlock. Auto-farm scripts grind through the repetitive tasks required for completionist goals. And ESP scripts ensure you never miss hidden collectibles or rare spawns.</p>
+
+            <h3>For Content Creators</h3>
+            <p>Roblox YouTubers, TikTokers, and streamers use RoCrack to enhance their content production. Scripts provide creative tools for staging scenes, accessing all areas of games for showcase videos, testing features for review content, and creating entertaining moments through trolling and creative scripts. Many popular Roblox content creators rely on RoCrack as an essential part of their production toolkit.</p>
+
+            <h3>For New Players</h3>
+            <p>If you are new to Roblox and feel overwhelmed by the vast amount of content and the steep learning curves in popular games, RoCrack helps you catch up quickly. Auto-farm scripts accelerate your early progression so you reach interesting game content faster. Quality-of-life scripts smooth out frustrating aspects of gameplay that might otherwise drive new players away. And our beginner-friendly guides and script descriptions make it easy to get started even if you have never used a script before.</p>
+
+            <h2>Technical Architecture — How RoCrack Delivers Reliability</h2>
+            <p>RoCrack's technical infrastructure is built for scale, reliability, and speed. Our platform uses globally distributed content delivery networks (CDNs) to ensure fast download speeds regardless of your geographic location. Multiple redundant servers handle key generation and verification, maintaining uptime even during peak traffic periods. Automated monitoring systems detect and resolve issues before they impact users, and our deployment pipeline enables rapid updates that reach all users within minutes.</p>
+            <p>The Delta Executor update system is particularly impressive from a technical standpoint. When Roblox releases an update, our automated detection systems identify the changes within minutes. Our development team then analyzes the impact on Delta's injection and execution systems, develops the necessary fixes, and pushes an update that Delta clients download automatically. This entire process — from Roblox update detection to Delta compatibility fix deployment — typically completes within 2-6 hours, an industry-leading response time that keeps our users scripting with minimal downtime.</p>
+
+            <h2>Mobile Gaming Statistics — Why Mobile Support Matters</h2>
+            <p>The shift to mobile gaming is not a future trend — it is the present reality. Consider these statistics that highlight why RoCrack's commitment to mobile support is so important:</p>
+            <ul>
+                <li>Over <strong>60% of Roblox players</strong> primarily access the platform through mobile devices.</li>
+                <li>Mobile gaming revenue now exceeds console and PC gaming combined globally.</li>
+                <li>The average mobile Roblox session lasts 26 minutes — perfect for script-assisted farming sessions.</li>
+                <li>Mobile players spend as much time in-game as PC players but progress slower due to control limitations — scripts eliminate this disadvantage.</li>
+                <li>AFK mobile farming has become the most popular scripting use case, enabling passive progression during daily activities.</li>
+            </ul>
+            <p>RoCrack's mobile-first approach ensures that the majority of Roblox players have full access to our scripting ecosystem. While competitors focus primarily on PC, we invest equally in mobile optimization, testing, and support.</p>
+
+            <h2>Legal &amp; Ethical Considerations</h2>
+            <p>Roblox scripting exists in a gray area between game modification and platform terms of service. RoCrack encourages responsible scripting practices:</p>
+            <ul>
+                <li>Use alternate accounts to protect your primary Roblox identity</li>
+                <li>Avoid disrupting other players' enjoyment — use trolling scripts in good fun, not for harassment</li>
+                <li>Respect game developers who create the content you enjoy — consider supporting them through legitimate game purchases</li>
+                <li>Understand that scripting carries inherent risks including potential account consequences</li>
+                <li>Use RoCrack scripts for personal enhancement, not for exploiting or scamming other players</li>
+            </ul>
+
+            <h2>Looking Forward — RoCrack 2026 Roadmap</h2>
+            <p>RoCrack continues to innovate and expand. Here is what we are working on for the remainder of 2026:</p>
+            <ul>
+                <li><strong>Expanded Game Coverage</strong> — Adding scripts for 20+ additional popular Roblox games</li>
+                <li><strong>Enhanced Delta Executor</strong> — Performance improvements, new features, and expanded mobile capabilities</li>
+                <li><strong>Community Features</strong> — User reviews, script ratings, and sharing features for the RoCrack community</li>
+                <li><strong>Video Tutorials</strong> — Step-by-step video guides for every script and feature</li>
+                <li><strong>Custom Script Requests</strong> — A system for users to request scripts for specific games and features</li>
+                <li><strong>Script Creator Program</strong> — A platform for community developers to publish their scripts through RoCrack with quality verification</li>
+            </ul>
+            <p>The Roblox scripting landscape evolves rapidly, and RoCrack evolves with it. Our commitment to quality, safety, and accessibility drives every decision we make, ensuring that RoCrack remains the undisputed #1 destination for Roblox scripts and Delta Executor for years to come.</p>
+
+
+            <h2>RoCrack Commitment to User Privacy &amp; Data Protection</h2>
+            <p>In an era where data privacy is paramount, RoCrack maintains a strict privacy-first approach to user data. Our platform operates on the principle of data minimization — we collect only the absolute minimum information needed to provide our services, and we never sell, share, or misuse user data for any purpose beyond service delivery.</p>
+            <p>When you use RoCrack, here is what we do and do not collect:</p>
+            <ul>
+                <li><strong>We collect your Roblox Username</strong> — This is necessary to generate Delta Executor keys. It is publicly available information.</li>
+                <li><strong>We DO NOT collect passwords</strong> — Your Roblox password is never requested, transmitted, or stored. Period.</li>
+                <li><strong>We DO NOT collect personal identity data</strong> — No real names, addresses, phone numbers, or government IDs.</li>
+                <li><strong>We DO NOT track your in-game activity</strong> — What scripts you use and how you use them is entirely your business.</li>
+                <li><strong>We use encrypted connections</strong> — All data transmitted between your device and RoCrack servers uses TLS encryption.</li>
+                <li><strong>We do not install trackers</strong> — Delta Executor does not contain analytics, telemetry, or tracking software beyond what is necessary for the auto-update system.</li>
+            </ul>
+            <p>This commitment to privacy is fundamental to the trust relationship between RoCrack and our users. When 15 million people trust you with their gaming experience, protecting their privacy and security is not optional — it is a sacred responsibility that drives every technical and policy decision we make.</p>
+
+            <h2>Global Reach — RoCrack Around the World</h2>
+            <p>RoCrack serves users in over 190 countries, making it a truly global platform for Roblox scripting. Our content delivery infrastructure is optimized for worldwide access, with server nodes strategically positioned across North America, Europe, Asia, South America, and Oceania to ensure fast download speeds and low latency for users everywhere. The platform supports multiple languages through community translations, and our scripts are designed to work regardless of the user's Roblox language settings or regional server location.</p>
+            <p>The global nature of our user base enriches the RoCrack ecosystem in meaningful ways. Script developers from different regions bring unique perspectives and game knowledge that improves the quality and diversity of our library. User feedback from around the world helps us identify and fix issues across different device types, network conditions, and Roblox server regions. And the sheer scale of our community — spanning every continent — provides a level of testing coverage that smaller, regional script platforms simply cannot match.</p>
+
+            <h2>RoCrack Success Stories — Real Users, Real Results</h2>
+            <p>The impact of RoCrack on its users' Roblox experiences is best illustrated through the results our community consistently achieves:</p>
+            <ul>
+                <li>Blox Fruits players regularly reach max level from fresh accounts in under 48 hours using RoCrack auto-farm scripts</li>
+                <li>Fisch players complete full collections that would normally take months in just days</li>
+                <li>Grow a Garden players build endgame farming empires within a week of starting</li>
+                <li>Rivals players climb to top-tier rankings with combat enhancement scripts</li>
+                <li>Mobile users achieve progression parity with PC players for the first time through Delta Executor mobile</li>
+            </ul>
+            <p>These results are not outliers — they are the everyday experience of RoCrack users who take advantage of our scripts, Delta Executor, and the resources we provide. Our platform transforms what would otherwise be hundreds of hours of grinding into efficient, automated progression that respects your time while delivering the gaming results you want.</p>
+
+            <h2>Getting the Most from RoCrack — Power User Tips</h2>
+            <ul>
+                <li><strong>Bookmark RoCrack</strong> — Make RoCrack your home page or bookmark it for quick access to scripts and updates.</li>
+                <li><strong>Check for Updates Daily</strong> — New scripts are added regularly, and existing scripts receive frequent updates. Checking daily ensures you always have the latest and best tools.</li>
+                <li><strong>Try Multiple Scripts</strong> — Different scripts excel at different things. Experiment with several scripts for each game to find the one that best fits your playstyle and needs.</li>
+                <li><strong>Use AFK Farming Wisely</strong> — Set up overnight farming sessions on mobile for maximum passive progression. Even a few hours of AFK farming daily compounds into massive progress over time.</li>
+                <li><strong>Combine RoCrack Services</strong> — Use our scripts for game progression and Delta Executor for execution. Together, these services provide a complete Roblox enhancement package.</li>
+                <li><strong>Stay Safe</strong> — Always script on alternate accounts, use the latest Delta version, and only download scripts from RoCrack to maintain maximum security.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <span class="footer-brand">RoCrack</span>
+                <div class="footer-links">
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                </div>
+                <p class="footer-disclaimer">
+                    Not affiliated with Roblox Corporation. We never ask for your password or personal data — only your username. Use at your own risk.
+                </p>
+                <span class="footer-copyright">© 2026 RoCrack. ALL RIGHTS RESERVED.</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 15;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Update online count
+        function updateOnlineCount() {
+            const el = document.getElementById('onlineCount');
+            const base = 800;
+            const variance = Math.floor(Math.random() * 100);
+            el.textContent = base + variance;
+        }
+
+        // Update date
+        function updateDate() {
+            const el = document.getElementById('updateDate');
+            const date = new Date();
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            el.textContent = months[date.getMonth()] + ' ' + date.getFullYear();
+        }
+
+        // Initialize
+        createParticles();
+        updateOnlineCount();
+        updateDate();
+        setInterval(updateOnlineCount, 5000);
+
+        // Add hover sound effect simulation (visual feedback)
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+        });
+    </script>
+  
+    <script>
+        // Umami custom path & step tracking
+        const VIRTUAL_PATH = '/';
+        
+        // Track initial page view
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof umami !== 'undefined') {
+                umami.track(props => ({ ...props, url: VIRTUAL_PATH }));
+            }
+        });
+        
+        // Function to track step changes (call this when user progresses)
+        function trackStep(stepName) {
+            if (typeof umami !== 'undefined') {
+                const stepPath = VIRTUAL_PATH + '/' + stepName;
+                umami.track(props => ({ ...props, url: stepPath }));
+                console.log('Tracked step:', stepPath);
+            }
+        }
+        
+        // Auto-track step transitions by observing container changes
+        const stepObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    const target = mutation.target;
+                    // Check if a step container became visible
+                    if (target.id && target.id.includes('step') && !target.classList.contains('hidden')) {
+                        trackStep(target.id);
+                    }
+                }
+            });
+        });
+        
+        // Start observing step containers
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[id*="step"], [id*="Step"]').forEach(function(el) {
+                stepObserver.observe(el, { attributes: true, attributeFilter: ['class'] });
+            });
+        });
+    </script>
+</body>
+</html>

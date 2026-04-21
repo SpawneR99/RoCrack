@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= title %></title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#10b981;--primary-glow:rgba(16,185,129,0.5);--accent:#00ff6a;--bg-dark:#0a0a0f;--bg-darker:#050508;--bg-card:rgba(15,15,25,0.9);--text-primary:#fff;--text-secondary:#a0a0b5;--text-muted:#5a5a70;--border-color:rgba(16,185,129,0.2);--warning:#ffaa00;--danger:#ff4757}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{overflow-x:hidden}
+  body{font-family:'Inter',sans-serif;background:var(--bg-darker);color:var(--text-primary);min-height:100vh;overflow-x:hidden}
+  .bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(16,185,129,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.03) 1px,transparent 1px);background-size:50px 50px;z-index:0;animation:gridMove 20s linear infinite}
+  @keyframes gridMove{0%{transform:translate(0,0)}100%{transform:translate(-50px,-50px)}}
+  .bg-glow{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(16,185,129,0.15),transparent 50%),radial-gradient(ellipse 60% 40% at 100% 50%,rgba(0,255,106,0.08),transparent 50%);pointer-events:none}
+
+  .container{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:2rem 1.5rem;min-height:100vh}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding:1rem 1.5rem;background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:16px}
+  .back-btn{display:inline-flex;align-items:center;gap:0.5rem;color:var(--text-secondary);font-size:0.88rem;font-weight:600;padding:0.5rem 1rem;border:1px solid var(--border-color);border-radius:10px;text-decoration:none}
+  .back-btn:hover{color:var(--primary);border-color:var(--primary)}
+
+  .locked-section{background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:20px;padding:2.5rem 2rem;text-align:center;margin-bottom:2rem}
+  .lock-icon{width:80px;height:80px;margin:0 auto 1.25rem;background:rgba(16,185,129,0.1);border:2px solid var(--border-color);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary)}
+  .lock-icon svg{width:36px;height:36px}
+  .content-title{font-size:1.6rem;font-weight:800;margin-bottom:0.6rem;background:linear-gradient(135deg,#fff 0%,var(--primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .content-subtitle{color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 1.5rem}
+  .progress-wrap{max-width:500px;margin:0 auto}
+  .progress-bar{height:10px;background:rgba(16,185,129,0.1);border-radius:999px;overflow:hidden;border:1px solid var(--border-color);margin-bottom:0.5rem}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:0%;transition:width 0.5s ease-out}
+  .progress-text{color:var(--text-muted);font-size:0.85rem;font-family:'JetBrains Mono',monospace}
+
+  .checking-status{margin-top:1rem;display:inline-flex;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.82rem}
+  .checking-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);animation:pulse 1.5s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+
+  .offers-section{background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:20px;padding:2rem;margin-bottom:2rem}
+  .offers-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.5rem}
+  .offers-title{font-size:1.15rem;font-weight:700}
+  .offer-count{color:var(--primary);font-size:0.82rem;font-weight:700;letter-spacing:0.1em;padding:0.35rem 0.85rem;background:rgba(16,185,129,0.1);border:1px solid var(--border-color);border-radius:10px}
+
+  .offers-grid{display:grid;grid-template-columns:1fr;gap:0.85rem}
+  @media(min-width:760px){.offers-grid{grid-template-columns:1fr 1fr}}
+
+  .offer-card{
+    display:flex;align-items:flex-start;gap:1rem;
+    padding:1.1rem 1.1rem;background:var(--bg-darker);border:1px solid var(--border-color);
+    border-radius:14px;text-decoration:none;color:var(--text-primary);
+    transition:all 0.25s;position:relative;overflow:hidden;animation:fadeInUp 0.4s ease-out backwards
+  }
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .offer-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 8px 28px rgba(16,185,129,0.18)}
+  .offer-icon{width:56px;height:56px;border-radius:10px;object-fit:cover;flex-shrink:0;background:var(--bg-card);border:1px solid var(--border-color)}
+  .offer-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:0.25rem}
+  .offer-title{font-size:1rem;font-weight:700;line-height:1.3;color:#fff}
+
+  /* KEY FIX: description fully visible, multi-line, preserves newlines */
+  .offer-description{
+    font-size:0.82rem;
+    line-height:1.55;
+    color:var(--text-secondary);
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    overflow-wrap:break-word;
+    display:block;           /* no clamp */
+    max-height:none;
+    padding-top:0.15rem;
+  }
+  .offer-meta{display:flex;gap:0.75rem;margin-top:0.35rem;color:var(--text-muted);font-size:0.72rem;font-family:'JetBrains Mono',monospace;flex-wrap:wrap}
+  .offer-meta span{display:inline-flex;align-items:center;gap:0.25rem}
+  .offer-arrow{color:var(--primary);align-self:center;flex-shrink:0;opacity:0.7;transition:transform 0.2s}
+  .offer-card:hover .offer-arrow{transform:translateX(3px);opacity:1}
+  .offer-arrow svg{width:20px;height:20px}
+
+  .loading-skeleton{height:100px;background:linear-gradient(90deg,var(--bg-darker) 0%,var(--bg-card) 50%,var(--bg-darker) 100%);background-size:200% 100%;border-radius:14px;animation:shimmer 1.4s infinite;border:1px solid var(--border-color)}
+  @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+  .unlocked-section{display:none;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(0,255,106,0.05));border:2px solid var(--primary);border-radius:20px;padding:2rem;text-align:center;margin-bottom:2rem}
+  .unlocked-section.show{display:block;animation:fadeInUp 0.5s ease-out}
+  .unlocked-title{font-size:1.5rem;font-weight:800;color:var(--accent);margin-bottom:1rem}
+  .unlocked-action{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;padding:1rem 2rem;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none}
+
+  .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--primary);color:#fff;padding:0.85rem 1.5rem;border-radius:12px;display:flex;align-items:center;gap:0.5rem;font-weight:600;z-index:1000;transition:transform 0.3s}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .toast svg{width:20px;height:20px}
+
+  footer{text-align:center;margin-top:2rem;padding:1.5rem 0;color:var(--text-muted);font-size:0.82rem}
+  footer a{color:var(--primary);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="container">
+  <header>
+    <a href="/scripts/<%= s.slug %>" class="back-btn">← BACK</a>
+    <a href="/" style="display:flex;align-items:center"><img src="/logo.png" alt="RoCrack" style="height:40px;width:auto;filter:drop-shadow(0 0 12px rgba(16,185,129,0.3))"></a>
+    <span style="color:var(--primary);font-size:0.78rem;font-weight:700;letter-spacing:0.1em">LOCKED</span>
+  </header>
+
+  <section class="locked-section" id="lockedContent">
+    <div class="lock-icon" id="lockIcon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </div>
+    <h1 class="content-title" id="contentTitle">Unlock <%= s.name %> Script</h1>
+    <p class="content-subtitle">Complete <strong id="requiredDisplay"><%= s.required_leads %></strong> offers below to unlock your script key. All offers are completely free.</p>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText">0 / <%= s.required_leads %> completed</div>
+    </div>
+    <div class="checking-status" id="checkingStatus"><span class="checking-dot"></span>Checking offer completions every 15s…</div>
+  </section>
+
+  <section class="unlocked-section" id="unlockedBox">
+    <h2 class="unlocked-title">✓ Content Unlocked!</h2>
+    <p style="color:var(--text-secondary);margin-bottom:1rem">Your <%= s.name %> script is ready below.</p>
+    <a href="#" class="unlocked-action" id="revealBtn">Reveal Script Key</a>
+    <pre id="keyBox" style="display:none;margin-top:1rem;padding:1rem;background:var(--bg-darker);border:1px solid var(--primary);border-radius:10px;color:var(--accent);font-family:'JetBrains Mono',monospace;word-break:break-all;white-space:pre-wrap"></pre>
+  </section>
+
+  <section class="offers-section">
+    <div class="offers-header">
+      <h2 class="offers-title">Available Offers</h2>
+      <span class="offer-count" id="offerCount">Loading…</span>
+    </div>
+    <div class="offers-grid" id="offersGrid">
+      <div class="loading-skeleton"></div>
+      <div class="loading-skeleton"></div>
+      <div class="loading-skeleton"></div>
+      <div class="loading-skeleton"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <%= new Date().getFullYear() %> RoCrack · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+  </footer>
+</div>
+
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+  <span id="toastMessage">Task completed!</span>
+</div>
+
+<script>
+(function() {
+  const CONFIG = {
+    niche:          <%- JSON.stringify(s.niche) %>,
+    slug:           <%- JSON.stringify(s.slug) %>,
+    name:           <%- JSON.stringify(s.name) %>,
+    maxOffers:      <%= s.max_offers %>,
+    minOffers:      <%= s.min_offers %>,
+    requiredLeads:  <%= s.required_leads %>,
+    checkInterval:  15000,
+  };
+
+  const offersGrid   = document.getElementById('offersGrid');
+  const offerCount   = document.getElementById('offerCount');
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  const checkingBox  = document.getElementById('checkingStatus');
+  const unlockedBox  = document.getElementById('unlockedBox');
+  const keyBox       = document.getElementById('keyBox');
+  const revealBtn    = document.getElementById('revealBtn');
+  const toast        = document.getElementById('toast');
+  const toastMsg     = document.getElementById('toastMessage');
+
+  let completed = 0;
+  let unlocked  = false;
+  let timer     = null;
+
+  async function loadOffers() {
+    try {
+      const res = await fetch('/api/offers?niche=' + encodeURIComponent(CONFIG.niche) +
+                              '&max=' + CONFIG.maxOffers + '&min=' + CONFIG.minOffers,
+                              { credentials: 'same-origin' });
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.offers) && data.offers.length) {
+        renderOffers(data.offers);
+      } else {
+        offersGrid.innerHTML = '<p style="grid-column:1/-1;color:var(--text-secondary);text-align:center;padding:2rem">No offers available right now. Please refresh the page.</p>';
+        offerCount.textContent = '0 offers';
+      }
+    } catch (e) {
+      offersGrid.innerHTML = '<p style="grid-column:1/-1;color:var(--text-secondary);text-align:center;padding:2rem">Failed to load offers. Please refresh.</p>';
+      offerCount.textContent = '—';
+    }
+  }
+
+  function renderOffers(offers) {
+    offerCount.textContent = offers.length + ' offer' + (offers.length === 1 ? '' : 's');
+    offersGrid.innerHTML = '';
+    offers.forEach((o, i) => {
+      const a = document.createElement('a');
+      a.href = o.url;
+      a.target = '_blank';
+      a.rel = 'noopener sponsored';
+      a.className = 'offer-card';
+      a.style.animationDelay = (i * 0.06) + 's';
+      a.innerHTML =
+        '<img src="' + safeAttr(o.image) + '" alt="" class="offer-icon" onerror="this.src=\'/logo.png\'">' +
+        '<div class="offer-content">' +
+          '<div class="offer-title">' + esc(o.title) + '</div>' +
+          '<div class="offer-description">' + esc(o.description || 'Complete this offer to earn credit.') + '</div>' +
+          (o.payout || o.country || o.device ?
+            '<div class="offer-meta">' +
+              (o.payout  ? '<span>💸 $' + esc(String(o.payout)) + '</span>' : '') +
+              (o.country ? '<span>🌍 ' + esc(String(o.country).slice(0,40)) + '</span>' : '') +
+              (o.device  ? '<span>📱 ' + esc(String(o.device).slice(0,30))  + '</span>' : '') +
+            '</div>' : '') +
+        '</div>' +
+        '<div class="offer-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>';
+      offersGrid.appendChild(a);
+    });
+  }
+
+  function checkLeads() {
+    if (unlocked) return;
+    const raw = localStorage.getItem('rc_leads_' + CONFIG.niche);
+    if (!raw) return;
+    try {
+      const arr = JSON.parse(raw);
+      completed = Array.isArray(arr) ? arr.length : 0;
+      updateProgress();
+      if (completed >= CONFIG.requiredLeads) unlock();
+    } catch (_) {}
+  }
+
+  function updateProgress() {
+    const pct = Math.min(100, (completed / CONFIG.requiredLeads) * 100);
+    progressFill.style.width = pct + '%';
+    progressText.textContent = completed + ' / ' + CONFIG.requiredLeads + ' completed';
+  }
+
+  function unlock() {
+    unlocked = true;
+    if (timer) clearInterval(timer);
+    checkingBox.style.display = 'none';
+    unlockedBox.classList.add('show');
+    progressFill.style.width = '100%';
+    progressText.textContent = 'Unlocked!';
+    localStorage.setItem('rc_unlocked_' + CONFIG.niche, '1');
+    showToast(CONFIG.name + ' unlocked!');
+  }
+
+  revealBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const k = generateKey();
+    keyBox.textContent = k;
+    keyBox.style.display = 'block';
+    revealBtn.style.display = 'none';
+  });
+
+  function generateKey() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let k = 'KEY_';
+    for (let i = 0; i < 20; i++) k += chars.charAt(Math.floor(Math.random() * chars.length));
+    return k;
+  }
+
+  function showToast(msg) {
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+
+  function esc(t) {
+    if (t == null) return '';
+    const d = document.createElement('div');
+    d.textContent = String(t);
+    return d.innerHTML;
+  }
+  function safeAttr(u) {
+    const s = String(u || '');
+    if (/^(https?:|data:image\/)/i.test(s)) return esc(s);
+    return '/logo.png';
+  }
+
+  if (localStorage.getItem('rc_unlocked_' + CONFIG.niche) === '1') {
+    completed = CONFIG.requiredLeads;
+    updateProgress();
+    unlock();
+  }
+  loadOffers();
+  timer = setInterval(checkLeads, CONFIG.checkInterval);
+})();
+</script>
+</body>
+</html>

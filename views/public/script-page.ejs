@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= s.meta_title || (s.name + ' Script — RoCrack 2026') %></title>
+<% if (s.meta_description) { %><meta name="description" content="<%= s.meta_description %>"><% } %>
+<% if (s.meta_keywords)    { %><meta name="keywords"    content="<%= s.meta_keywords %>"><% } %>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/scripts/<%= s.slug %>">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#10b981;--primary-glow:rgba(16,185,129,0.5);--primary-dark:#059669;--accent:#22c55e;--bg-dark:#0a0a0f;--bg-darker:#050508;--bg-card:rgba(15,15,25,0.9);--text-primary:#fff;--text-secondary:#a0a0b5;--text-muted:#5a5a70;--border-color:rgba(16,185,129,0.2)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{overflow-x:hidden}
+  body{font-family:'Inter',sans-serif;background:var(--bg-darker);color:var(--text-primary);min-height:100vh;overflow-x:hidden;line-height:1.6}
+  .bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(16,185,129,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.03) 1px,transparent 1px);background-size:50px 50px;z-index:0}
+  .bg-glow{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(16,185,129,0.15),transparent 50%),radial-gradient(ellipse 60% 40% at 100% 100%,rgba(34,197,94,0.08),transparent 50%);pointer-events:none}
+
+  .container{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding:1rem 1.5rem;background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:16px}
+  .back-btn{display:inline-flex;align-items:center;gap:0.5rem;color:var(--text-secondary);font-size:0.88rem;font-weight:600;letter-spacing:0.05em;padding:0.5rem 1rem;border:1px solid var(--border-color);border-radius:10px;text-decoration:none}
+  .back-btn:hover{color:var(--primary);border-color:var(--primary)}
+
+  .privacy-notice{background:rgba(239,68,68,0.08);border:2px solid rgba(239,68,68,0.3);border-radius:12px;padding:1rem 1.5rem;margin-bottom:2rem;text-align:center}
+  .privacy-notice p{color:#fca5a5;font-size:0.85rem}
+  .privacy-notice strong{color:#ef4444}
+
+  .hero-section{display:flex;align-items:center;gap:2rem;padding:2.5rem 2rem;background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:24px;margin-bottom:2rem}
+  .hero-icon{width:120px;height:120px;border-radius:24px;border:2px solid var(--border-color);object-fit:cover;flex-shrink:0;background:var(--bg-darker)}
+  .hero-text h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;margin-bottom:0.5rem;background:linear-gradient(135deg,#fff 0%,var(--primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero-text p{color:var(--text-secondary);font-size:1.05rem}
+  @media(max-width:700px){.hero-section{flex-direction:column;text-align:center;padding:2rem 1.25rem}.hero-icon{width:100px;height:100px}}
+
+  .cta-row{display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap}
+  .btn-primary{display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;padding:1rem 2rem;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;box-shadow:0 8px 24px rgba(16,185,129,0.35);transition:transform 0.2s}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-secondary{display:inline-flex;align-items:center;gap:0.5rem;background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border-color);padding:1rem 1.5rem;border-radius:12px;font-size:0.95rem;font-weight:600;text-decoration:none}
+
+  .section-title{margin:2.5rem 0 1rem;font-size:1.4rem;font-weight:700;letter-spacing:-0.01em}
+
+  .hubs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.75rem;margin-bottom:2rem}
+  .hub-card{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;transition:all 0.25s}
+  .hub-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+  .hub-name{font-weight:600;color:var(--text-primary)}
+  .hub-dl{font-size:0.82rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace}
+
+  .content-body{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:2rem;margin-bottom:2rem}
+  .content-body h2{color:var(--primary);font-size:1.35rem;margin:1.5rem 0 0.75rem}
+  .content-body h2:first-child{margin-top:0}
+  .content-body h3{font-size:1.1rem;margin:1.25rem 0 0.5rem;color:#86efac}
+  .content-body p{color:var(--text-secondary);margin-bottom:1rem}
+  .content-body ul{padding-left:1.5rem;margin-bottom:1rem;color:var(--text-secondary)}
+  .content-body li{margin-bottom:0.4rem}
+  .content-body strong{color:var(--text-primary)}
+  .content-body a{color:var(--primary)}
+
+  footer{text-align:center;margin-top:3rem;padding:2rem 0;color:var(--text-muted);font-size:0.85rem}
+  footer a{color:var(--primary);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="container">
+  <header>
+    <a href="/scripts" class="back-btn">← ALL SCRIPTS</a>
+    <a href="/" style="display:flex;align-items:center"><img src="/logo.png" alt="RoCrack" style="height:44px;width:auto;filter:drop-shadow(0 0 14px rgba(16,185,129,0.3))"></a>
+    <span style="color:var(--text-muted);font-size:0.8rem;letter-spacing:0.1em">ONLINE</span>
+  </header>
+
+  <div class="privacy-notice">
+    <p>⚠ <strong>WE NEVER ASK FOR YOUR PERSONAL DATA.</strong> We only need your <strong>Roblox username</strong>. We will <strong>NEVER</strong> ask for your password, email, or any account credentials.</p>
+  </div>
+
+  <section class="hero-section">
+    <img src="<%= s.icon_path %>" alt="<%= s.name %>" class="hero-icon" onerror="this.src='/logo.png'">
+    <div class="hero-text">
+      <h1><%= s.name %> Script</h1>
+      <% if (s.tagline) { %><p><%= s.tagline %></p><% } %>
+      <div class="cta-row">
+        <a href="/scripts/<%= s.slug %>/locker" class="btn-primary">Get Script →</a>
+        <% if (s.video_url) { %><a href="<%= s.video_url %>" target="_blank" rel="noopener" class="btn-secondary">Watch Tutorial</a><% } %>
+      </div>
+    </div>
+  </section>
+
+  <% if (s.hubs && s.hubs.length > 0) { %>
+    <h2 class="section-title">Available Hubs / Versions</h2>
+    <div class="hubs-grid">
+      <% s.hubs.forEach(function(h) { %>
+        <div class="hub-card">
+          <span class="hub-name"><%= h.name %></span>
+          <% if (h.downloads) { %><span class="hub-dl"><%= h.downloads %> dl</span><% } %>
+        </div>
+      <% }); %>
+    </div>
+  <% } %>
+
+  <% if (s.description && s.description.trim().length > 0) { %>
+    <div class="content-body">
+      <%- s.description %>
+    </div>
+  <% } %>
+
+  <div style="text-align:center;margin:2.5rem 0">
+    <a href="/scripts/<%= s.slug %>/locker" class="btn-primary" style="padding:1.1rem 2.5rem;font-size:1.05rem">Unlock <%= s.name %> Script →</a>
+  </div>
+
+  <footer>
+    <p>© <%= new Date().getFullYear() %> RoCrack · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+  </footer>
+</div>
+</body>
+</html>

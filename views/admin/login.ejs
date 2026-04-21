@@ -1,0 +1,20 @@
+<%- include('partials/head') %>
+<div class="login-wrap">
+  <form class="login-card" method="POST" action="<%= adminPath %>/login" autocomplete="off">
+    <div class="brand-small"><img src="/logo.png" alt="RoCrack"></div>
+    <h1>Admin Login</h1>
+    <% if (error) { %><div class="error-box"><%= error %></div><% } %>
+    <div class="form-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required autofocus autocomplete="username">
+    </div>
+    <div class="form-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required autocomplete="current-password">
+    </div>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button type="submit" class="btn wide">Sign In</button>
+    <p style="margin-top:1.25rem;color:var(--dim);font-size:0.78rem;text-align:center">Protected area. All attempts are logged.</p>
+  </form>
+</div>
+<%- include('partials/foot') %>
