@@ -10,7 +10,7 @@ const { doubleCsrf } = require('csrf-csrf');
 
 const db          = require('./src/db');
 const auth        = require('./src/auth');
-const { fetchOffers } = require('./src/providers');
+const { fetchOffers, buildOgadsButtonUrl } = require('./src/providers');
 const { seedIfEmpty } = require('./src/seed');
 const buildAdminRouter  = require('./src/routes_admin');
 const buildPublicRouter = require('./src/routes_public');
@@ -148,18 +148,38 @@ app.get('/api/offers', async (req, res) => {
     minOffers = Math.max(1, Math.min(maxOffers, minOffers));
 
     const provider = db.getSetting('provider', 'adbluemedia');
+    const requiredLeads = script
+      ? script.required_leads
+      : (parseInt(db.getSetting('default_required_leads', '2'), 10) || 2);
 
+    // OGAds mode: we don't pull a list of offers — we send the user to a
+    // single OGAds landing page with aff_sub4=<niche>. The client renders a
+    // big "Click Here" CTA. One click counts as the unlock action.
+    if (provider === 'ogads') {
+      res.set('Cache-Control', 'no-store');
+      return res.json({
+        success: true,
+        provider: 'ogads',
+        mode: 'button',
+        niche,
+        requiredLeads: 1,
+        buttonUrl: buildOgadsButtonUrl(niche),
+        offers: [],
+      });
+    }
+
+    // AdBlueMedia mode: classic offer list.
     const ip        = getIp(req);
     const userAgent = String(req.headers['user-agent'] || '');
-
     const offers = await fetchOffers({ provider, niche, ip, userAgent, maxOffers, minOffers });
 
     res.set('Cache-Control', 'no-store');
     res.json({
       success: true,
       provider,
+      mode: 'list',
       niche,
-      requiredLeads: script ? script.required_leads : parseInt(db.getSetting('default_required_leads', '2'), 10) || 2,
+      requiredLeads,
       offers,
     });
   } catch (err) {

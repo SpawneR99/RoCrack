@@ -27,7 +27,15 @@ const ADBLUE = {
 const OGADS = {
   endpoint: process.env.OGADS_ENDPOINT   || 'https://checkmyapp.space/api/v2',
   apiKey:   process.env.OGADS_API_KEY    || '',
+  // Landing URL the user is sent to when OGAds is active. Niche flows into aff_sub4.
+  buttonUrl: process.env.OGADS_BUTTON_URL || 'https://devicevrfy.net/cl/i/7jvwdk',
 };
+
+function buildOgadsButtonUrl(niche) {
+  const base = OGADS.buttonUrl.replace(/\?.*$/, '');
+  const sub  = encodeURIComponent(String(niche || 'RoCrack'));
+  return `${base}?aff_sub4=${sub}`;
+}
 
 async function fetchAdBlue({ niche, ip, userAgent, maxOffers }) {
   const params = new URLSearchParams({
@@ -137,4 +145,4 @@ async function fetchOffers({ provider, niche, ip, userAgent, maxOffers, minOffer
   throw new Error(`Unknown provider: ${provider}`);
 }
 
-module.exports = { fetchOffers, fetchAdBlue, fetchOgAds };
+module.exports = { fetchOffers, fetchAdBlue, fetchOgAds, buildOgadsButtonUrl };
