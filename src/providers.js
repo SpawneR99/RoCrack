@@ -22,6 +22,8 @@ const ADBLUE = {
     || 'https://d1y3y09sav47f5.cloudfront.net/public/offers/feed.php',
   userId:   process.env.ADBLUE_USER_ID   || '',
   apiKey:   process.env.ADBLUE_API_KEY   || '',
+  // Landing URL the user is sent to when AdBlueMedia is active. Niche flows into s1.
+  buttonUrl: process.env.ADBLUE_BUTTON_URL || 'https://devicegetty.com/3211251',
 };
 
 const OGADS = {
@@ -35,6 +37,12 @@ function buildOgadsButtonUrl(niche) {
   const base = OGADS.buttonUrl.replace(/\?.*$/, '');
   const sub  = encodeURIComponent(String(niche || 'RoCrack'));
   return `${base}?aff_sub4=${sub}`;
+}
+
+function buildAdBlueButtonUrl(niche) {
+  const base = ADBLUE.buttonUrl.replace(/\?.*$/, '');
+  const sub  = encodeURIComponent(String(niche || 'RoCrack'));
+  return `${base}?s1=${sub}`;
 }
 
 async function fetchAdBlue({ niche, ip, userAgent, maxOffers }) {
@@ -145,4 +153,4 @@ async function fetchOffers({ provider, niche, ip, userAgent, maxOffers, minOffer
   throw new Error(`Unknown provider: ${provider}`);
 }
 
-module.exports = { fetchOffers, fetchAdBlue, fetchOgAds, buildOgadsButtonUrl };
+module.exports = { fetchOffers, fetchAdBlue, fetchOgAds, buildOgadsButtonUrl, buildAdBlueButtonUrl };

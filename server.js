@@ -10,7 +10,7 @@ const { doubleCsrf } = require('csrf-csrf');
 
 const db          = require('./src/db');
 const auth        = require('./src/auth');
-const { fetchOffers, buildOgadsButtonUrl } = require('./src/providers');
+const { fetchOffers, buildOgadsButtonUrl, buildAdBlueButtonUrl } = require('./src/providers');
 const { seedIfEmpty } = require('./src/seed');
 const buildAdminRouter  = require('./src/routes_admin');
 const buildPublicRouter = require('./src/routes_public');
@@ -132,55 +132,27 @@ app.use(buildPublicRouter());
 app.get('/api/offers', async (req, res) => {
   try {
     const niche = String(req.query.niche || '').slice(0, 120) || 'RoCrack';
-
-    // Admin is ALWAYS the source of truth. Order of precedence:
-    //   1. Per-script config from DB (if this niche matches a DB script)
-    //   2. Global defaults from Settings (DB `default_*_offers`)
-    // Client-provided ?max / ?min query params are intentionally ignored so
-    // legacy pages that hardcode e.g. `max=6` cannot override the admin.
-    const script = db.listScripts().find(s => s.niche === niche);
-    const defMax = parseInt(db.getSetting('default_max_offers', '4'), 10) || 4;
-    const defMin = parseInt(db.getSetting('default_min_offers', '2'), 10) || 2;
-
-    let maxOffers = script ? script.max_offers : defMax;
-    let minOffers = script ? script.min_offers : defMin;
-    maxOffers = Math.max(1, Math.min(20, maxOffers));
-    minOffers = Math.max(1, Math.min(maxOffers, minOffers));
-
     const provider = db.getSetting('provider', 'adbluemedia');
-    const requiredLeads = script
-      ? script.required_leads
-      : (parseInt(db.getSetting('default_required_leads', '2'), 10) || 2);
 
-    // OGAds mode: we don't pull a list of offers — we send the user to a
-    // single OGAds landing page with aff_sub4=<niche>. The client renders a
-    // big "Click Here" CTA. One click counts as the unlock action.
-    if (provider === 'ogads') {
-      res.set('Cache-Control', 'no-store');
-      return res.json({
-        success: true,
-        provider: 'ogads',
-        mode: 'button',
-        niche,
-        requiredLeads: 1,
-        buttonUrl: buildOgadsButtonUrl(niche),
-        offers: [],
-      });
-    }
-
-    // AdBlueMedia mode: classic offer list.
-    const ip        = getIp(req);
-    const userAgent = String(req.headers['user-agent'] || '');
-    const offers = await fetchOffers({ provider, niche, ip, userAgent, maxOffers, minOffers });
+    // Both providers now use the same single-button flow:
+    //   • AdBlueMedia → https://devicegetty.com/<id>?s1=<niche>
+    //   • OGAds       → https://devicevrfy.net/cl/i/<id>?aff_sub4=<niche>
+    // The client renders a big "Click Here" CTA, the user finishes 2 quick
+    // verification steps on the next page, and the script unlocks on return.
+    // Per-script offer list / max / min config is no longer consulted here.
+    const buttonUrl = provider === 'ogads'
+      ? buildOgadsButtonUrl(niche)
+      : buildAdBlueButtonUrl(niche);
 
     res.set('Cache-Control', 'no-store');
-    res.json({
+    return res.json({
       success: true,
-      provider,
-      mode: 'list',
+      provider: provider === 'ogads' ? 'ogads' : 'adbluemedia',
+      mode: 'button',
       niche,
-      requiredLeads,
-      offers,
+      requiredLeads: 1,
+      buttonUrl,
+      offers: [],
     });
   } catch (err) {
     console.error('[/api/offers]', err.message);

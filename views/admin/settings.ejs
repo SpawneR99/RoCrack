@@ -22,23 +22,26 @@
           <input type="radio" name="provider" value="adbluemedia" <%= provider === 'adbluemedia' ? 'checked' : '' %> style="margin-top:0.2rem;accent-color:var(--primary)">
           <span>
             <strong style="display:block;margin-bottom:0.25rem">AdBlueMedia</strong>
-            <span style="color:var(--muted);font-size:0.82rem">Niche goes to <code>s1</code>. Uses <code>ADBLUE_USER_ID</code> &amp; <code>ADBLUE_API_KEY</code>.</span>
+            <span style="color:var(--muted);font-size:0.82rem">One-click CTA flow. Niche flows into <code>s1</code>. Uses <code>ADBLUE_BUTTON_URL</code>.</span>
           </span>
         </label>
         <label style="display:flex;align-items:flex-start;gap:0.75rem;background:var(--bg2);border:2px solid <%= provider === 'ogads' ? 'var(--primary)' : 'var(--border)' %>;border-radius:10px;padding:1rem;cursor:pointer;text-transform:none;letter-spacing:normal;font-weight:500;color:var(--text)">
           <input type="radio" name="provider" value="ogads" <%= provider === 'ogads' ? 'checked' : '' %> style="margin-top:0.2rem;accent-color:var(--primary)">
           <span>
             <strong style="display:block;margin-bottom:0.25rem">OGAds</strong>
-            <span style="color:var(--muted);font-size:0.82rem">Niche goes to <code>aff_sub4</code>. Uses <code>OGADS_API_KEY</code> (Bearer auth).</span>
+            <span style="color:var(--muted);font-size:0.82rem">One-click CTA flow. Niche flows into <code>aff_sub4</code>. Uses <code>OGADS_BUTTON_URL</code>.</span>
           </span>
         </label>
       </div>
+      <p style="color:var(--muted);font-size:0.82rem;margin-top:1rem;line-height:1.6">
+        Both providers now run the same single-button flow: the locker shows a big <strong>Click Here</strong> CTA that sends the user to the network's landing page with the script's niche appended. No offer-list API is used.
+      </p>
     </div>
 
     <div class="card">
-      <h3>Default Offer Limits</h3>
+      <h3>Default Offer Limits <span style="color:var(--muted);font-size:0.72rem;font-weight:500">(legacy — no longer applied)</span></h3>
       <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1rem">
-        These apply to any script that doesn't have its own override, and to legacy pages that don't send an explicit limit.
+        These settings were used by the old offer-list flow. Both providers now run the single-button flow where one click unlocks the script, so max/min/required are effectively ignored. Left here for reference; safe to leave at defaults.
       </p>
       <div class="form-row three">
         <div class="form-field">

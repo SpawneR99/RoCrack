@@ -3,12 +3,15 @@
  *   1. (rc-patch:required-from-api) The client reads `requiredLeads` from the
  *      /api/offers response and updates the progress UI accordingly.
  *   2. (rc-patch:ogads-button) When the server responds with mode='button'
- *      (OGAds provider), the page renders a single big "Click Here" CTA
- *      instead of an offer list. One click + short wait unlocks the script.
+ *      (applies to BOTH AdBlueMedia and OGAds now), the page renders a
+ *      single big "Click Here" CTA instead of an offer list. One click +
+ *      short wait unlocks the script.
  *   3. (rc-patch:ogads-helper) Injects a self-contained helper + CSS that
  *      draws the CTA, animates it, and handles the unlock lifecycle.
+ *      (Sentinel name is historical; the helper is provider-agnostic now.)
  *
- * Safe to re-run: each injection is guarded by a sentinel.
+ * Safe to re-run: each injection is guarded by a sentinel. Re-running also
+ * refreshes the user-facing CTA copy on existing patched files.
  *
  * Usage:  node scripts-cli/patch-lockers.js
  */
@@ -117,13 +120,13 @@ const HELPER = `
 
     // Update the intro copy.
     var lockDesc = document.querySelector('.lock-description');
-    if (lockDesc) lockDesc.textContent = 'Click the button below and follow the instructions on the next page to unlock your script.';
+    if (lockDesc) lockDesc.textContent = 'You have 2 additional steps to finish the script injection. Click the button below and follow the instructions — takes about 3 minutes.';
 
     var offersTitle = document.querySelector('.offers-title');
-    if (offersTitle) offersTitle.textContent = 'Last Step';
+    if (offersTitle) offersTitle.textContent = 'Final Injection Steps';
 
     var offerCount = document.getElementById('offerCount');
-    if (offerCount) offerCount.textContent = '1 Step';
+    if (offerCount) offerCount.textContent = '2 Steps Left';
 
     // Update the progress "0 / N completed" text to 0 / 1.
     var progressText = document.getElementById('progressText');
@@ -135,12 +138,12 @@ const HELPER = `
 
     grid.innerHTML =
       '<div class="rc-ogads-wrap">' +
-        '<div class="rc-ogads-lastbadge"><span>Last Step</span></div>' +
+        '<div class="rc-ogads-lastbadge"><span>2 Steps Left — ~3 Minutes</span></div>' +
         '<a href="' + encodeURI(buttonUrl) + '" target="_blank" rel="noopener sponsored" class="rc-ogads-cta" id="rcOgClick">' +
           '<span>Click Here</span>' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14l9 1 1 9 10-12-10-1z"/></svg>' +
         '</a>' +
-        '<p class="rc-ogads-help">Click the button, <strong>follow the instructions on the next page</strong>, and come back. Your script will unlock automatically when you return.</p>' +
+        '<p class="rc-ogads-help">Tap the button, <strong>complete 2 quick verification steps</strong> on the next page, and come back. Your script finishes injecting automatically on return. <strong>Takes about 3 minutes.</strong></p>' +
         '<div class="rc-ogads-pending" id="rcOgPending"><span class="dot"></span><span>Verifying completion…</span></div>' +
       '</div>';
 
@@ -183,7 +186,42 @@ const HELPER = `
 </script>
 `;
 
-let patched = 0, upgraded = 0, skipped = 0, notFound = 0;
+/* ─── CTA copy refresh table ─────────────────────────────────────────────
+ * Running this script rewrites old CTA copy in already-patched files so
+ * all lockers stay in sync whenever we tweak the user-facing text.
+ * Each entry is applied in order; replacements are idempotent (if the
+ * "to" string is already present the "from" regex simply won't match).
+ */
+const COPY_REFRESH = [
+  {
+    from: /if \(lockDesc\) lockDesc\.textContent = 'Click the button below and follow the instructions on the next page to unlock your script\.';/g,
+    to:   "if (lockDesc) lockDesc.textContent = 'You have 2 additional steps to finish the script injection. Click the button below and follow the instructions — takes about 3 minutes.';",
+  },
+  {
+    from: /if \(offersTitle\) offersTitle\.textContent = 'Last Step';/g,
+    to:   "if (offersTitle) offersTitle.textContent = 'Final Injection Steps';",
+  },
+  {
+    from: /if \(offerCount\) offerCount\.textContent = '1 Step';/g,
+    to:   "if (offerCount) offerCount.textContent = '2 Steps Left';",
+  },
+  {
+    from: /'<div class="rc-ogads-lastbadge"><span>Last Step<\/span><\/div>' \+/g,
+    to:   "'<div class=\"rc-ogads-lastbadge\"><span>2 Steps Left — ~3 Minutes</span></div>' +",
+  },
+  {
+    from: /'<p class="rc-ogads-help">Click the button, <strong>follow the instructions on the next page<\/strong>, and come back\. Your script will unlock automatically when you return\.<\/p>' \+/g,
+    to:   "'<p class=\"rc-ogads-help\">Tap the button, <strong>complete 2 quick verification steps</strong> on the next page, and come back. Your script finishes injecting automatically on return. <strong>Takes about 3 minutes.</strong></p>' +",
+  },
+];
+
+/* Files that ALSO carry the helper but aren't legacy lockers (e.g. the
+ * dynamic locker template) still need copy refreshes. */
+const EXTRA_COPY_TARGETS = [
+  'views/public/locker-page.ejs',
+];
+
+let patched = 0, upgraded = 0, skipped = 0, notFound = 0, refreshed = 0;
 
 for (const rel of FILES) {
   const full = path.join(ROOT, rel);
@@ -230,7 +268,27 @@ for (const rel of FILES) {
     console.log('  injected helper:', rel);
   }
 
+  // ── Copy refresh (rewrites stale CTA text in-place) ────────────────────
+  const before = src;
+  for (const { from, to } of COPY_REFRESH) src = src.replace(from, to);
+  if (src !== before) { refreshed++; console.log('  refreshed copy:', rel); }
+
   fs.writeFileSync(full, src);
 }
 
-console.log(`\n[patch-lockers] patched=${patched} upgraded=${upgraded} skipped=${skipped} notFound=${notFound}`);
+// Files outside the main FILES list that also carry the helper CTA copy
+// (e.g. the dynamic EJS template) — refresh their strings too.
+for (const rel of EXTRA_COPY_TARGETS) {
+  const full = path.join(ROOT, rel);
+  if (!fs.existsSync(full)) { console.warn('  missing (extra):', rel); continue; }
+  let src = fs.readFileSync(full, 'utf8');
+  const before = src;
+  for (const { from, to } of COPY_REFRESH) src = src.replace(from, to);
+  if (src !== before) {
+    fs.writeFileSync(full, src);
+    refreshed++;
+    console.log('  refreshed copy:', rel);
+  }
+}
+
+console.log(`\n[patch-lockers] patched=${patched} upgraded=${upgraded} refreshed=${refreshed} skipped=${skipped} notFound=${notFound}`);

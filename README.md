@@ -1,8 +1,13 @@
 # RoCrack
 
-Roblox script aggregator with a secured admin CMS, two-provider offer wall
-(AdBlueMedia **or** OGAds — togglable at runtime), SQLite persistence, and
-full Coolify-ready Docker image.
+Roblox script aggregator with a secured admin CMS, a unified **single-button
+CTA flow** powered by either AdBlueMedia or OGAds (togglable at runtime),
+SQLite persistence, and a full Coolify-ready Docker image.
+
+Both providers use the same one-click unlock pattern now — the user taps
+**Click Here**, finishes 2 quick verification steps on the network's
+landing page, and the script unlocks on return. The niche is passed as
+`s1` (AdBlueMedia) or `aff_sub4` (OGAds).
 
 - **Admin panel** — add / edit / hide / delete scripts, manage hubs (versions),
   upload icons, configure per-script required leads and offer counts.
@@ -56,12 +61,18 @@ See `.env.example` — copy it to `.env` and fill in. Summary of the important o
 | `ADMIN_USERNAME`, `ADMIN_PASSWORD_HASH` | Admin login. Hash is bcrypt (`npm run hash`). |
 | `JWT_SECRET`, `CSRF_SECRET`, `COOKIE_SECRET` | Three independent random 64-char secrets. |
 | `SESSION_TTL` | Session lifetime in seconds (default `28800` = 8h). |
-| `ADBLUE_USER_ID`, `ADBLUE_API_KEY` | AdBlueMedia credentials (niche → `s1`). |
-| `OGADS_API_KEY`, `OGADS_ENDPOINT` | OGAds credentials (niche → `aff_sub4`, Bearer auth). |
+| `ADBLUE_BUTTON_URL` | AdBlueMedia landing URL (e.g. `https://devicegetty.com/3211251`). Niche is appended as `?s1=<niche>`. |
+| `OGADS_BUTTON_URL` | OGAds landing URL (e.g. `https://devicevrfy.net/cl/i/7jvwdk`). Niche is appended as `?aff_sub4=<niche>`. |
+| `ADBLUE_USER_ID`, `ADBLUE_API_KEY`, `OGADS_API_KEY`, `OGADS_ENDPOINT` | **Unused.** Kept in `.env.example` for reference — the old offer-list API has been ditched in favour of the single-button flow. |
 | `DATA_DIR`, `UPLOADS_DIR` | Paths to the persisted volumes. Defaults to `./data` and `./uploads`. |
 | `TRUST_PROXY` | Set to `true` behind Cloudflare / Coolify proxy so real client IPs are read from `X-Forwarded-For`. |
 
-> **Note.** The active offer provider (`adbluemedia` / `ogads`) and the per-script offer limits (`max_offers`, `min_offers`, `required_leads`) are managed from the admin dashboard, not env vars. The public site URL is inferred from the request — no `PUBLIC_URL` setting needed.
+> **Note.** The active offer provider (`adbluemedia` / `ogads`) is toggled
+> from the admin dashboard, not env vars. The per-script `max_offers` /
+> `min_offers` / `required_leads` fields are legacy (from the offer-list
+> era) and are currently ignored by the single-button flow — they are kept
+> in the admin UI for reference. The public site URL is inferred from the
+> request — no `PUBLIC_URL` setting needed.
 
 ---
 
@@ -76,7 +87,7 @@ See `.env.example` — copy it to `.env` and fill in. Summary of the important o
 5. **Environment variables** — paste every variable from `.env.example`. Fill in:
    - your bcrypt hash (generate locally with `npm run hash -- "password"`)
    - three distinct 64-char random secrets
-   - the AdBlue and OGAds credentials
+   - the AdBlue and OGAds **button URLs** (`ADBLUE_BUTTON_URL`, `OGADS_BUTTON_URL`)
    - `NODE_ENV=production`, `TRUST_PROXY=true`
 6. **Domain + HTTPS** — use Coolify's automatic TLS. Once HTTPS is live, session
    cookies automatically become `Secure` (because `NODE_ENV=production`).
@@ -132,9 +143,10 @@ rendered fully dynamically from templates.
 
 **Settings → Offer Delivery Provider → AdBlueMedia / OGAds → Save**.
 
-The change is live immediately. The existing 14 legacy locker pages use a
-common `/api/offers` endpoint, so they benefit from the toggle too — no code or
-HTML changes needed.
+The change is live immediately. All locker pages (legacy + dynamic) use a
+common `/api/offers` endpoint that now returns a single `buttonUrl` —
+switching the provider simply swaps out which landing URL the big
+**Click Here** CTA points to. No code or HTML changes needed.
 
 ---
 

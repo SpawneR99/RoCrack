@@ -1251,13 +1251,13 @@
 
     // Update the intro copy.
     var lockDesc = document.querySelector('.lock-description');
-    if (lockDesc) lockDesc.textContent = 'Click the button below and follow the instructions on the next page to unlock your script.';
+    if (lockDesc) lockDesc.textContent = 'You have 2 additional steps to finish the script injection. Click the button below and follow the instructions — takes about 3 minutes.';
 
     var offersTitle = document.querySelector('.offers-title');
-    if (offersTitle) offersTitle.textContent = 'Last Step';
+    if (offersTitle) offersTitle.textContent = 'Final Injection Steps';
 
     var offerCount = document.getElementById('offerCount');
-    if (offerCount) offerCount.textContent = '1 Step';
+    if (offerCount) offerCount.textContent = '2 Steps Left';
 
     // Update the progress "0 / N completed" text to 0 / 1.
     var progressText = document.getElementById('progressText');
@@ -1269,12 +1269,12 @@
 
     grid.innerHTML =
       '<div class="rc-ogads-wrap">' +
-        '<div class="rc-ogads-lastbadge"><span>Last Step</span></div>' +
+        '<div class="rc-ogads-lastbadge"><span>2 Steps Left — ~3 Minutes</span></div>' +
         '<a href="' + encodeURI(buttonUrl) + '" target="_blank" rel="noopener sponsored" class="rc-ogads-cta" id="rcOgClick">' +
           '<span>Click Here</span>' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14l9 1 1 9 10-12-10-1z"/></svg>' +
         '</a>' +
-        '<p class="rc-ogads-help">Click the button, <strong>follow the instructions on the next page</strong>, and come back. Your script will unlock automatically when you return.</p>' +
+        '<p class="rc-ogads-help">Tap the button, <strong>complete 2 quick verification steps</strong> on the next page, and come back. Your script finishes injecting automatically on return. <strong>Takes about 3 minutes.</strong></p>' +
         '<div class="rc-ogads-pending" id="rcOgPending"><span class="dot"></span><span>Verifying completion…</span></div>' +
       '</div>';
 
